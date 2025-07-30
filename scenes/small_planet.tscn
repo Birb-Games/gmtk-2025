@@ -6,6 +6,8 @@
 radius = 5.09902
 
 [node name="SmallPlanet" instance=ExtResource("1_jmpwg")]
+modulate = Color(0, 1, 0, 1)
+mass = 0.5
 
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(0.3, 0.3)

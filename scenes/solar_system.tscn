@@ -9,6 +9,6 @@ script = ExtResource("1_tjb5t")
 star = NodePath("Star")
 
 [node name="SmallPlanet" parent="." instance=ExtResource("2_228jm")]
-position = Vector2(-80, 0)
+position = Vector2(-104, 0)
 
 [node name="Star" parent="." instance=ExtResource("1_u7djx")]

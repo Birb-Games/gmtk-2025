@@ -9,7 +9,7 @@ radius = 33.1361
 
 [node name="Star" instance=ExtResource("1_j6vao")]
 is_static = true
-mass = 1000.0
+mass = 500.0
 
 [node name="Glow" type="Sprite2D" parent="." index="0"]
 modulate = Color(0.960784, 0.960784, 0.341176, 0.392157)
