@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://20ha62frq61c" path="res://scripts/space_sprite.gd" id="2_8fbvs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fera7"]
-radius = 17.0
+radius = 16.0312
 
 [node name="SpaceObject" type="Area2D"]
 script = ExtResource("1_vuqy0")
@@ -16,3 +16,5 @@ script = ExtResource("2_8fbvs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_fera7")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

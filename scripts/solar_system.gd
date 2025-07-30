@@ -5,6 +5,7 @@ extends Node2D
 # Gravitational constant
 const GRAVITY_CONST: float = 5000.0
 
+@export var rogue_planet_speed: float = 10.0
 @export var star: SpaceObject
 
 func _ready() -> void:
@@ -19,6 +20,8 @@ func _ready() -> void:
 		if child is SpaceObject:
 			if child.is_static:
 				continue
+			if !child.orbit_sun:
+				continue
 			var diff = child.position - star.position
 			var dist = diff.length()
 			if dist < 0.001:
@@ -28,6 +31,7 @@ func _ready() -> void:
 			var speed = sqrt(dist * force.length() / child.mass)
 			var dir = Vector2(-diff.y, diff.x)
 			child.velocity = dir.normalized() * speed
+	$RoguePlanet.velocity = ($Homeworld.position - $RoguePlanet.position).normalized() * rogue_planet_speed
 
 # Get the force object2 is exerting on object1
 static func get_gravity_force(object1: SpaceObject, object2: SpaceObject) -> Vector2:
