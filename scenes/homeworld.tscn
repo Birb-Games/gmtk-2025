@@ -1,13 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://rl7rou56kuhg"]
+[gd_scene load_steps=5 format=3 uid="uid://rl7rou56kuhg"]
 
 [ext_resource type="PackedScene" uid="uid://x5sp1y0y178q" path="res://scenes/space_object.tscn" id="1_1jbh8"]
 [ext_resource type="Script" uid="uid://dhtha4j8jelh4" path="res://scripts/camera.gd" id="2_6cfps"]
+[ext_resource type="Texture2D" uid="uid://c1d18xg5ntnp8" path="res://assets/textures/homeworld.png" id="2_n8f01"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n7lcj"]
 radius = 17.0294
 
 [node name="Homeworld" instance=ExtResource("1_1jbh8")]
-modulate = Color(0, 1, 1, 1)
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("2_n8f01")
+rotation_speed = 0.393
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_n7lcj")
