@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cfnsaojiroi77" path="res://scenes/small_planet.tscn" id="2_228jm"]
 [ext_resource type="PackedScene" uid="uid://rl7rou56kuhg" path="res://scenes/homeworld.tscn" id="4_teypr"]
 [ext_resource type="PackedScene" uid="uid://bf5p7gle6e1jl" path="res://scenes/asteroid_field.tscn" id="5_sjaf3"]
-[ext_resource type="PackedScene" uid="uid://b0ggm7x3myuge" path="res://rogue_planet.tscn" id="6_2yas3"]
+[ext_resource type="PackedScene" uid="uid://b0ggm7x3myuge" path="res://scenes/rogue_planet.tscn" id="6_2yas3"]
 
 [node name="SolarSystem" type="Node2D" node_paths=PackedStringArray("star")]
 script = ExtResource("1_tjb5t")
@@ -27,4 +27,4 @@ inner_radius = 1000
 outer_radius = 1400
 
 [node name="RoguePlanet" parent="." instance=ExtResource("6_2yas3")]
-position = Vector2(-4131, -642)
+position = Vector2(-3000, 0)
