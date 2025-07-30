@@ -9,8 +9,14 @@ const GRAVITY_CONST: float = 5000.0
 @export var star: SpaceObject
 
 func _ready() -> void:
+	# Gather all space objects, including asteroids
+	var space_objects: Array[Node] = get_children()
+	for child in space_objects:
+		if child.name.contains("Asteroid"):
+			space_objects.append_array(child.get_children())
+
 	# Set the speeds of the objects
-	for child in get_children():
+	for child in space_objects:
 		if child is SpaceObject:
 			if child.is_static:
 				continue
