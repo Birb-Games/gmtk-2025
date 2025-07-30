@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bf5p7gle6e1jl"]
+
+[ext_resource type="Script" uid="uid://bjnahuktiyhve" path="res://scripts/asteroid_field_generator.gd" id="1_hms1a"]
+
+[node name="AsteroidField" type="Node2D"]
+script = ExtResource("1_hms1a")
+asteroid_count = 1000
