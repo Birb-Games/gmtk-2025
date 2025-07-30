@@ -5,35 +5,36 @@
 [ext_resource type="Script" uid="uid://20ha62frq61c" path="res://scripts/space_sprite.gd" id="3_ef0hr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j6vao"]
-radius = 33.1361
+radius = 136.132
 
 [node name="Star" instance=ExtResource("1_j6vao")]
 is_static = true
-mass = 500.0
+mass = 1000.0
 
 [node name="Glow" type="Sprite2D" parent="." index="0"]
-modulate = Color(0.960784, 0.960784, 0.341176, 0.392157)
-scale = Vector2(1.09375, 1.09375)
+modulate = Color(0.960784, 0.960784, 1, 0.392157)
+scale = Vector2(4.34007, 4.34007)
 texture = ExtResource("2_ef0hr")
 script = ExtResource("3_ef0hr")
 rotation_speed = -0.785
 
 [node name="Glow2" type="Sprite2D" parent="." index="1"]
-modulate = Color(0.960784, 0.960784, 0.341176, 0.392157)
-scale = Vector2(1.19977, 1.19977)
+modulate = Color(0.960784, 0.960784, 1, 0.392157)
+scale = Vector2(4.76077, 4.76077)
 texture = ExtResource("2_ef0hr")
 script = ExtResource("3_ef0hr")
 rotation_speed = -0.785
 
 [node name="Glow3" type="Sprite2D" parent="." index="2"]
-modulate = Color(0.960784, 0.960784, 0.341176, 0.392157)
-scale = Vector2(1.15625, 1.15625)
+modulate = Color(0.960784, 0.960784, 1, 0.392157)
+scale = Vector2(4.58808, 4.58808)
 texture = ExtResource("2_ef0hr")
 script = ExtResource("3_ef0hr")
 rotation_speed = 0.785
 
 [node name="Sprite2D" parent="." index="3"]
-modulate = Color(0.960784, 0.960784, 0.341176, 1)
+modulate = Color(0.960784, 1, 1, 1)
+scale = Vector2(3.96807, 3.96807)
 texture = ExtResource("2_ef0hr")
 
 [node name="CollisionShape2D" parent="." index="4"]
