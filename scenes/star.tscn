@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccqmsegewmpg"]
+
+[ext_resource type="PackedScene" uid="uid://x5sp1y0y178q" path="res://scenes/space_object.tscn" id="1_j6vao"]
+[ext_resource type="Texture2D" uid="uid://l7eujhn2a7qx" path="res://assets/textures/star.png" id="2_ef0hr"]
+[ext_resource type="Script" uid="uid://20ha62frq61c" path="res://scripts/space_sprite.gd" id="3_ef0hr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j6vao"]
+radius = 33.1361
+
+[node name="Star" instance=ExtResource("1_j6vao")]
+is_static = true
+mass = 1000.0
+
+[node name="Glow" type="Sprite2D" parent="." index="0"]
+modulate = Color(0.960784, 0.960784, 0.341176, 0.392157)
+scale = Vector2(1.09375, 1.09375)
+texture = ExtResource("2_ef0hr")
+script = ExtResource("3_ef0hr")
+rotation_speed = -0.785
+
+[node name="Glow2" type="Sprite2D" parent="." index="1"]
+modulate = Color(0.960784, 0.960784, 0.341176, 0.392157)
+scale = Vector2(1.19977, 1.19977)
+texture = ExtResource("2_ef0hr")
+script = ExtResource("3_ef0hr")
+rotation_speed = -0.785
+
+[node name="Glow3" type="Sprite2D" parent="." index="2"]
+modulate = Color(0.960784, 0.960784, 0.341176, 0.392157)
+scale = Vector2(1.15625, 1.15625)
+texture = ExtResource("2_ef0hr")
+script = ExtResource("3_ef0hr")
+rotation_speed = 0.785
+
+[node name="Sprite2D" parent="." index="3"]
+modulate = Color(0.960784, 0.960784, 0.341176, 1)
+texture = ExtResource("2_ef0hr")
+
+[node name="CollisionShape2D" parent="." index="4"]
+shape = SubResource("CircleShape2D_j6vao")
