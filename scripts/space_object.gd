@@ -11,6 +11,7 @@ extends Area2D
 @export var initial_vel: Vector2 = Vector2.ZERO
 var velocity: Vector2 = Vector2.ZERO
 @export var mass: float = 1.0
+@export var orbit_sun: bool = true
 
 func _ready() -> void:
 	velocity = initial_vel

@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmuetoarvl05h"]
+[gd_scene load_steps=6 format=3 uid="uid://bmuetoarvl05h"]
 
 [ext_resource type="Script" uid="uid://dgei27gfgx0ky" path="res://scripts/solar_system.gd" id="1_tjb5t"]
 [ext_resource type="PackedScene" uid="uid://ccqmsegewmpg" path="res://scenes/star.tscn" id="1_u7djx"]
 [ext_resource type="PackedScene" uid="uid://cfnsaojiroi77" path="res://scenes/small_planet.tscn" id="2_228jm"]
 [ext_resource type="PackedScene" uid="uid://rl7rou56kuhg" path="res://scenes/homeworld.tscn" id="4_teypr"]
+[ext_resource type="PackedScene" uid="uid://b0ggm7x3myuge" path="res://rogue_planet.tscn" id="5_sjaf3"]
 
 [node name="SolarSystem" type="Node2D" node_paths=PackedStringArray("star")]
 script = ExtResource("1_tjb5t")
+rogue_planet_speed = 120.0
 star = NodePath("Star")
 
 [node name="Star" parent="." instance=ExtResource("1_u7djx")]
@@ -18,3 +20,6 @@ mass = 4.0
 
 [node name="Homeworld" parent="." instance=ExtResource("4_teypr")]
 position = Vector2(-520, 0)
+
+[node name="RoguePlanet" parent="." instance=ExtResource("5_sjaf3")]
+position = Vector2(-4627, -814)
