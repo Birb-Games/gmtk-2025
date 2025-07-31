@@ -7,6 +7,7 @@
 radius = 33.1361
 
 [node name="Homeworld" instance=ExtResource("1_1jbh8")]
+mass = 3.0
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_n8f01")

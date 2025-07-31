@@ -6,7 +6,9 @@
 [node name="Asteroid" instance=ExtResource("1_akfqu")]
 scale = Vector2(0.25, 0.25)
 mass = 0.1
+is_asteroid = true
 
 [node name="Sprite2D" parent="." index="0"]
+scale = Vector2(2, 2)
 texture = ExtResource("2_6mo6b")
 rotation_speed = 5.0
