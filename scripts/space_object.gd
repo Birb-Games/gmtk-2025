@@ -45,14 +45,17 @@ func explode() -> void:
 		asteroid.scale = Vector2(asteroid_scale, asteroid_scale)
 		asteroid.position = position + dist * Vector2(cos(angle), sin(angle))
 		asteroid.initial_vel = Vector2(cos(angle), sin(angle)) * 200.0
-		if asteroid.initial_vel.dot(velocity) > 0.0:
-			asteroid.initial_vel *= -1.0
 		solar_system.get_node("Debris").call_deferred("add_child", asteroid)
 	queue_free()
 
-func _on_area_entered(area: Area2D) -> void:
+func _on_area_entered(area: Area2D) -> void:	
+	if area is Bullet:
+		if is_asteroid:
+			queue_free()
+		elif !is_static:
+			health -= 0.1
 	if area is SpaceObject:
 		if !is_static and !(is_asteroid and area.is_asteroid):
 			health -= area.mass
-		if health <= 0.0:
+		if health <= 0.0 and !is_static:
 			explode()
