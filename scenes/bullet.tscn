@@ -34,9 +34,8 @@ mass = 0.15
 orbit_sun = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_eoqba")
-frame_progress = 0.000540876
+frame_progress = 0.0484159
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_h1aey")
