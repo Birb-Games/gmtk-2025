@@ -42,3 +42,6 @@ func set_orbit(center_object: SpaceObject) -> void:
 	var speed = sqrt(dist * force.length() / mass)
 	var dir = Vector2(-diff.y, diff.x)
 	velocity = dir.normalized() * speed
+	if randi() % 2 == 0:
+		velocity *= -1.0
+

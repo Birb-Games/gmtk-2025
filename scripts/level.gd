@@ -55,5 +55,7 @@ func get_total_gravity_force(object: SpaceObject) -> Vector2:
 		if child is SpaceObject:
 			if child is Asteroid:
 				continue
+			if child is Debris:
+				continue
 			total_force += GravitySim.get_gravity_force(object, child)
 	return total_force

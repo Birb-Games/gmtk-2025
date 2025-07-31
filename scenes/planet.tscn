@@ -11,6 +11,7 @@
 script = ExtResource("1_h8ms6")
 center_object = NodePath("Earth")
 asteroid_scene = ExtResource("2_0k1rn")
+asteroid_spawn_time = null
 
 [node name="PlayerSatellite" parent="." instance=ExtResource("1_cktii")]
 position = Vector2(0, -152)

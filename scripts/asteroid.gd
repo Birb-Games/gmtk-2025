@@ -47,5 +47,5 @@ func _on_area_entered(area: Area2D) -> void:
 		explode()
 	if area is Player:
 		explode()
-	if area is SpaceObject and area is not Asteroid:
+	if area is SpaceObject and area is not Asteroid and area is not Debris:
 		explode()

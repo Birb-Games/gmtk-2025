@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://be66kbryxw1dt"
-path="res://.godot/imported/cannon_base.png-717fdcb1853398c79a13a22a30c1d389.ctex"
+uid="uid://dancjjfamfb8r"
+path="res://.godot/imported/debris.png-f435d6ec7a5c3bb08e1bfcb46477b258.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/cannon_base.png"
-dest_files=["res://.godot/imported/cannon_base.png-717fdcb1853398c79a13a22a30c1d389.ctex"]
+source_file="res://assets/textures/debris.png"
+dest_files=["res://.godot/imported/debris.png-f435d6ec7a5c3bb08e1bfcb46477b258.ctex"]
 
 [params]
 

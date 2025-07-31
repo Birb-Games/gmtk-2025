@@ -1,8 +1,8 @@
 extends Node2D
 
-@export var inner_radius: int = 700
-@export var outer_radius: int = 900
-@export var asteroid_count: int = 100
+@export var inner_radius: int = 200
+@export var outer_radius: int = 300
+@export var asteroid_count: int = 16
 
 var asteroid_scene: PackedScene = preload("res://scenes/asteroid.tscn")
 

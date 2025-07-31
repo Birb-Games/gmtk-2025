@@ -11,6 +11,7 @@ const SHOOT_COOLDOWN: float = 0.2
 @export var min_dist: float = 128.0
 @export var max_dist: float = 400.0
 @export var bullet_scene: PackedScene
+@export var debris_scene: PackedScene
 var reverse_timer: float = 0.0
 var shoot_timer: float = 0.0
 
@@ -71,6 +72,15 @@ func _process(delta: float) -> void:
 		explode()
 
 func explode():
+	for i in range(15):
+		var angle = randf() * 2.0 * PI
+		var debris: SpaceObject = debris_scene.instantiate()
+		var dist = randf() * 15.0
+		var debris_scale = randf_range(0.25, 0.5)
+		debris.scale = Vector2(debris_scale, debris_scale)
+		debris.position = position + dist * Vector2(cos(angle), sin(angle))
+		debris.velocity = Vector2(cos(angle), sin(angle)) * 80.0
+		level.call_deferred("add_child", debris)
 	queue_free()
 
 func _on_area_entered(area: Area2D) -> void:
@@ -79,5 +89,7 @@ func _on_area_entered(area: Area2D) -> void:
 			health -= 1
 		else:
 			health = 0
+	elif area is Debris:
+		health -= 1
 	elif area is SpaceObject:
 		health = 0

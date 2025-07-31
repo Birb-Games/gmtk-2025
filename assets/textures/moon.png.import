@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cxp03devbq75m"
-path="res://.godot/imported/small_planet.png-68310f659e9487816856678d37b8bc42.ctex"
+path="res://.godot/imported/moon.png-23e72aad99218b26c069d493c4d8fc72.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/small_planet.png"
-dest_files=["res://.godot/imported/small_planet.png-68310f659e9487816856678d37b8bc42.ctex"]
+source_file="res://assets/textures/moon.png"
+dest_files=["res://.godot/imported/moon.png-23e72aad99218b26c069d493c4d8fc72.ctex"]
 
 [params]
 
