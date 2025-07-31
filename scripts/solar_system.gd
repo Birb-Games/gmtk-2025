@@ -7,13 +7,23 @@ const GRAVITY_CONST: float = 5000.0
 
 @export var rogue_planet_speed: float = 10.0
 @export var star: SpaceObject
+@export var rogue_planet_scene: PackedScene
+var rogue_planet_spawn_timer: float = 0.0
+const ROGUE_PLANET_SPAWN_DELAY: float = 45.0
 
-func _ready() -> void:
+func spawn_rogue_planet() -> void:
+	var homeworld = get_node_or_null("Homeworld")
+	if homeworld == null:
+		return
 	# Generate random position for the rogue planet
 	var angle = randf() * 2.0 * PI
-	var rogue_planet_dist = ($RoguePlanet.position - star.position).length()
-	$RoguePlanet.position = Vector2(cos(angle), sin(angle)) * rogue_planet_dist
+	var pos = Vector2(cos(angle), sin(angle)) * 3000.0
+	var rogue_planet: SpaceObject = rogue_planet_scene.instantiate()
+	rogue_planet.position = pos
+	rogue_planet.velocity = (homeworld.position - rogue_planet.position).normalized() * rogue_planet_speed
+	add_child(rogue_planet)
 
+func _ready() -> void:
 	# Gather all space objects, including asteroids
 	var space_objects: Array[Node] = get_children()
 	for child in space_objects:
@@ -36,7 +46,14 @@ func _ready() -> void:
 			var speed = sqrt(dist * force.length() / child.mass)
 			var dir = Vector2(-diff.y, diff.x)
 			child.velocity = dir.normalized() * speed
-	$RoguePlanet.velocity = ($Homeworld.position - $RoguePlanet.position).normalized() * rogue_planet_speed
+
+func _process(delta: float) -> void:
+	if rogue_planet_spawn_timer > 0.0:
+		rogue_planet_spawn_timer -= delta
+	
+	if rogue_planet_spawn_timer <= 0.0:
+		rogue_planet_spawn_timer = ROGUE_PLANET_SPAWN_DELAY
+		spawn_rogue_planet()
 
 # Get the force object2 is exerting on object1
 static func get_gravity_force(object1: SpaceObject, object2: SpaceObject) -> Vector2:

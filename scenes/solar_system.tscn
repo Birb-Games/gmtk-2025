@@ -13,6 +13,7 @@
 script = ExtResource("1_tjb5t")
 rogue_planet_speed = 120.0
 star = NodePath("Star")
+rogue_planet_scene = ExtResource("6_2yas3")
 
 [node name="Star" parent="." instance=ExtResource("1_u7djx")]
 modulate = Color(1, 1, 0.34902, 1)
@@ -22,9 +23,6 @@ position = Vector2(-520, 0)
 
 [node name="SmallPlanet" parent="." instance=ExtResource("2_228jm")]
 position = Vector2(0, -245)
-
-[node name="RoguePlanet" parent="." instance=ExtResource("6_2yas3")]
-position = Vector2(-3000, 0)
 
 [node name="SmallPlanet2" parent="." instance=ExtResource("2_228jm")]
 position = Vector2(-576, 371)
