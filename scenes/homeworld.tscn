@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://rl7rou56kuhg"]
+[gd_scene load_steps=20 format=3 uid="uid://rl7rou56kuhg"]
 
 [ext_resource type="PackedScene" uid="uid://x5sp1y0y178q" path="res://scenes/space_object.tscn" id="1_1jbh8"]
 [ext_resource type="Texture2D" uid="uid://c1d18xg5ntnp8" path="res://assets/textures/homeworld.png" id="2_n8f01"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dff63n425u66h" path="res://scripts/homeworld.gd" id="3_ny6qj"]
 [ext_resource type="Script" uid="uid://ovx04hku8lbx" path="res://scripts/laser_cannon.gd" id="4_ny6qj"]
 [ext_resource type="PackedScene" uid="uid://cx3nupylfohle" path="res://scenes/bullet.tscn" id="6_5igpr"]
+[ext_resource type="Texture2D" uid="uid://chhmtoct26j6c" path="res://assets/textures/rocket_boosters.png" id="8_ktvuy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ngsun"]
 atlas = ExtResource("3_ngsun")
@@ -49,6 +50,50 @@ animations = [{
 "speed": 1.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfu1b"]
+atlas = ExtResource("8_ktvuy")
+region = Rect2(0, 40, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtq64"]
+atlas = ExtResource("8_ktvuy")
+region = Rect2(32, 40, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbj0e"]
+atlas = ExtResource("8_ktvuy")
+region = Rect2(64, 40, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktvuy"]
+atlas = ExtResource("8_ktvuy")
+region = Rect2(0, 0, 32, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ai0if"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfu1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtq64")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbj0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtq64")
+}],
+"loop": true,
+"name": &"active",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktvuy")
+}],
+"loop": true,
+"name": &"inactive",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_n7lcj"]
 radius = 33.1361
 
@@ -77,6 +122,15 @@ position = Vector2(0, -24)
 z_index = -1
 position = Vector2(0, -32)
 texture = ExtResource("3_n8f01")
+
+[node name="RocketBooster" type="AnimatedSprite2D" parent="Sprite2D" index="2"]
+z_index = -1
+position = Vector2(0, 36)
+scale = Vector2(1.0625, 1.0625)
+sprite_frames = SubResource("SpriteFrames_ai0if")
+animation = &"inactive"
+autoplay = "inactive"
+frame_progress = 0.0817396
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_n7lcj")
