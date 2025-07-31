@@ -47,7 +47,7 @@ func explode() -> void:
 		asteroid.initial_vel = Vector2(cos(angle), sin(angle)) * 200.0
 		if asteroid.initial_vel.dot(velocity) > 0.0:
 			asteroid.initial_vel *= -1.0
-		solar_system.call_deferred("add_child", asteroid)
+		solar_system.get_node("Debris").call_deferred("add_child", asteroid)
 	queue_free()
 
 func _on_area_entered(area: Area2D) -> void:
