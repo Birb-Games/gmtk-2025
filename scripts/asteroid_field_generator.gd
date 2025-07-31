@@ -12,7 +12,7 @@ func _ready() -> void:
 		var angle: float = randf() * 2.0 * PI
 		var distance_from_sun: float = randf_range(inner_radius, outer_radius)
 		asteroid.position = Vector2(cos(angle), sin(angle)) * distance_from_sun
-		var asteroid_scale = randf_range(0.1, 0.5)
+		var asteroid_scale = randf_range(0.8, 1.2)
 		asteroid.scale = Vector2(asteroid_scale, asteroid_scale)
 
 		add_child(asteroid)
