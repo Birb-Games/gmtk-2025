@@ -1,6 +1,6 @@
 extends Camera2D
 
-const MIN_ZOOM: float = 0.2
+const MIN_ZOOM: float = 1.0
 const MAX_ZOOM: float = 4.0
 
 func _process(_delta: float) -> void:

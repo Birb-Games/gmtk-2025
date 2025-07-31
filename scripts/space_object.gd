@@ -2,7 +2,7 @@ class_name SpaceObject
 
 extends Area2D
 
-@onready var solar_system: SolarSystem = $/root/Main/SolarSystem
+@onready var level = $/root/Main/Planet
 
 @onready var asteroid_scene: PackedScene = preload("uid://dgc6sxp0v4uf6")
 
@@ -28,7 +28,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	position += velocity * delta / 2.0
 	if !is_static:
-		var force = solar_system.get_total_gravity_force(self)
+		var force = level.get_total_gravity_force(self)
 		var acceleration = force / mass
 		velocity += acceleration * delta
 	position += velocity * delta / 2.0
@@ -45,7 +45,7 @@ func explode() -> void:
 		asteroid.scale = Vector2(asteroid_scale, asteroid_scale)
 		asteroid.position = position + dist * Vector2(cos(angle), sin(angle))
 		asteroid.initial_vel = Vector2(cos(angle), sin(angle)) * 200.0
-		solar_system.get_node("Debris").call_deferred("add_child", asteroid)
+		level.call_deferred("add_child", asteroid)
 	queue_free()
 
 func _on_area_entered(area: Area2D) -> void:	

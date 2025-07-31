@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://2oltjvbyir1q"]
+
+[ext_resource type="PackedScene" uid="uid://cxo4kp71j6amn" path="res://scenes/player_satellite.tscn" id="1_cktii"]
+[ext_resource type="Script" uid="uid://do6jtfhrbmf7w" path="res://scripts/level.gd" id="1_h8ms6"]
+[ext_resource type="PackedScene" uid="uid://rl7rou56kuhg" path="res://scenes/earth.tscn" id="3_ggt7d"]
+
+[node name="Planet" type="Node2D" node_paths=PackedStringArray("center_object")]
+script = ExtResource("1_h8ms6")
+center_object = NodePath("Earth")
+
+[node name="PlayerSatellite" parent="." instance=ExtResource("1_cktii")]
+position = Vector2(0, -128)
+rotation = 3.14159
+
+[node name="Earth" parent="." instance=ExtResource("3_ggt7d")]
