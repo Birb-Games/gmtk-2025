@@ -1,10 +1,13 @@
+class_name Player
+
 extends Area2D
 
 const REVERSE_COOLDOWN: float = 0.2
 const SHOOT_COOLDOWN: float = 0.2
 
 @onready var level: Level = $/root/Main/Planet
-@export var speed: float = 80.0
+@export var orbital_speed: float = 100.0
+@export var speed: float = 120.0
 @export var min_dist: float = 128.0
 @export var max_dist: float = 300.0
 @export var bullet_scene: PackedScene
@@ -16,12 +19,12 @@ func reverse_dir() -> void:
 		return
 
 	if Input.is_action_just_pressed("left"):
-		if speed > 0.0:
-			speed *= -1.0
+		if orbital_speed > 0.0:
+			orbital_speed *= -1.0
 			reverse_timer = REVERSE_COOLDOWN
 	if Input.is_action_just_pressed("right"):
-		if speed < 0.0:
-			speed *= -1.0
+		if orbital_speed < 0.0:
+			orbital_speed *= -1.0
 			reverse_timer = REVERSE_COOLDOWN
 
 func move(delta: float) -> void:
@@ -48,7 +51,7 @@ func _process(delta: float) -> void:
 	move(delta)
 	# Rotate around center (0, 0)
 	var vel = Vector2(-position.y, position.x).normalized()
-	position += vel * speed * delta
+	position += vel * orbital_speed * delta
 
 	# Set rotation
 	var diff = get_global_mouse_position() - global_position

@@ -2,12 +2,16 @@ class_name Level
 
 extends Node2D
 
-# Gravitational constant
-const GRAVITY_CONST: float = 5000.0
-
 @export var center_object: SpaceObject
 
+@export var asteroid_scene: PackedScene
+
+@export var asteroid_spawn_time: float = 10.0
+var asteroid_timer: float
+
 func _ready() -> void:
+	asteroid_timer = asteroid_spawn_time / 2.0
+
 	# Gather all space objects, including asteroids
 	var space_objects: Array[Node] = get_children()
 	for child in space_objects:
@@ -19,33 +23,34 @@ func _ready() -> void:
 		if child is SpaceObject:
 			if child.is_static:
 				continue
-			if !child.orbit_sun:
+			if !child.orbit:
 				continue
-			var diff = child.position - center_object.position
-			var dist = diff.length()
-			if dist < 0.001:
-				continue
-			var force = get_gravity_force(child, center_object)
-			# v^2 / r * mass = force
-			var speed = sqrt(dist * force.length() / child.mass)
-			var dir = Vector2(-diff.y, diff.x)
-			child.velocity = dir.normalized() * speed
+			child.set_orbit(center_object)
 
-# Get the force object2 is exerting on object1
-static func get_gravity_force(object1: SpaceObject, object2: SpaceObject) -> Vector2:
-	var dist = (object1.position - object2.position).length()
+func spawn_asteroid() -> void:
+	# Spawn asteroid
+	var asteroid: SpaceObject = asteroid_scene.instantiate()
+	# Generate random position
+	var dist = randf_range($PlayerSatellite.min_dist, $PlayerSatellite.max_dist)
+	var angle = randf() * 2.0 * PI
+	var pos = Vector2(cos(angle), sin(angle)) * dist
+	if (pos - $PlayerSatellite.position).length() < 50.0:
+		return
+	asteroid.position = pos
+	asteroid.set_orbit(center_object)
+	add_child(asteroid)
 
-	# Do not process if the objects are too close to each other
-	if dist < 0.001:
-		return Vector2.ZERO
-
-	var diff = (object2.position - object1.position).normalized()
-	var mag = GRAVITY_CONST * object1.mass * object2.mass / (dist * dist)
-	return mag * diff
+func _process(delta: float) -> void:
+	asteroid_timer -= delta
+	if asteroid_timer < 0.0:
+		asteroid_timer = asteroid_spawn_time
+		spawn_asteroid()	
 
 func get_total_gravity_force(object: SpaceObject) -> Vector2:
 	var total_force: Vector2 = Vector2.ZERO
 	for child in get_children():
 		if child is SpaceObject:
-			total_force += get_gravity_force(object, child)
+			if child is Asteroid:
+				continue
+			total_force += GravitySim.get_gravity_force(object, child)
 	return total_force
