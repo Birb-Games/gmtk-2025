@@ -15,6 +15,8 @@ var velocity: Vector2 = Vector2.ZERO
 var health: float = 0.0
 var max_health: float = 0.0
 
+var asteroid_debris: PackedScene = preload("res://scenes/asteroid.tscn")
+
 func _ready() -> void:
 	velocity = initial_vel
 	health = mass
@@ -29,6 +31,14 @@ func _process(delta: float) -> void:
 	position += velocity * delta / 2.0
 
 func explode() -> void:
+	for i in range(mass / 5.0):
+		var asteroid: SpaceObject = asteroid_debris.instantiate()
+		asteroid.position = position + Vector2(randf_range(-100, 100), randf_range(-100, 100))
+		asteroid.initial_vel = velocity + Vector2(randf_range(-200, 200), randf_range(-200, 200))
+		var asteroid_scale = randf_range(0.1, 0.5)
+		asteroid.scale = Vector2(asteroid_scale, asteroid_scale)
+		solar_system.call_deferred("add_child", asteroid)
+
 	queue_free()
 
 func _on_area_entered(area: Area2D) -> void:
