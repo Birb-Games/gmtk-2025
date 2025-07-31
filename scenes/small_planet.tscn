@@ -4,13 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://cxp03devbq75m" path="res://assets/textures/small_planet.png" id="2_hxnfn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cktii"]
-radius = 8.0
+radius = 12.0
 
 [node name="SmallPlanet" instance=ExtResource("1_jmpwg")]
 mass = 0.5
 
 [node name="Sprite2D" parent="." index="0"]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_hxnfn")
 
 [node name="CollisionShape2D" parent="." index="1"]

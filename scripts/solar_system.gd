@@ -9,6 +9,11 @@ const GRAVITY_CONST: float = 5000.0
 @export var star: SpaceObject
 
 func _ready() -> void:
+	# Generate random position for the rogue planet
+	var angle = randf() * 2.0 * PI
+	var rogue_planet_dist = ($RoguePlanet.position - star.position).length()
+	$RoguePlanet.position = Vector2(cos(angle), sin(angle)) * rogue_planet_dist
+
 	# Gather all space objects, including asteroids
 	var space_objects: Array[Node] = get_children()
 	for child in space_objects:
