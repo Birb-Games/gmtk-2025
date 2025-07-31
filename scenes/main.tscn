@@ -18,5 +18,3 @@ scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_0wfyh")
 
 [node name="Planet" parent="." instance=ExtResource("4_jyhfs")]
-
-[node name="Camera2D" type="Camera2D" parent="."]

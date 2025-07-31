@@ -9,10 +9,13 @@ const SHOOT_COOLDOWN: float = 0.2
 @export var orbital_speed: float = 100.0
 @export var speed: float = 120.0
 @export var min_dist: float = 128.0
-@export var max_dist: float = 300.0
+@export var max_dist: float = 400.0
 @export var bullet_scene: PackedScene
 var reverse_timer: float = 0.0
 var shoot_timer: float = 0.0
+
+const MAX_HEALTH: int = 20
+var health: int = MAX_HEALTH
 
 func reverse_dir() -> void:
 	if reverse_timer > 0.0:
@@ -63,3 +66,18 @@ func _process(delta: float) -> void:
 
 	shoot_timer -= delta
 	shoot()
+
+	if health <= 0:
+		explode()
+
+func explode():
+	queue_free()
+
+func _on_area_entered(area: Area2D) -> void:
+	if area is Asteroid:
+		if area.is_debris:
+			health -= 1
+		else:
+			health = 0
+	elif area is SpaceObject:
+		health = 0

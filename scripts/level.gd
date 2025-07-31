@@ -30,11 +30,14 @@ func _ready() -> void:
 func spawn_asteroid() -> void:
 	# Spawn asteroid
 	var asteroid: SpaceObject = asteroid_scene.instantiate()
+	var player_satellite = get_node_or_null("PlayerSatellite")
+	if player_satellite == null:
+		return
 	# Generate random position
-	var dist = randf_range($PlayerSatellite.min_dist, $PlayerSatellite.max_dist)
+	var dist = randf_range(player_satellite.min_dist, player_satellite.max_dist)
 	var angle = randf() * 2.0 * PI
 	var pos = Vector2(cos(angle), sin(angle)) * dist
-	if (pos - $PlayerSatellite.position).length() < 50.0:
+	if (pos - player_satellite.position).length() < 100.0:
 		return
 	asteroid.position = pos
 	asteroid.set_orbit(center_object)

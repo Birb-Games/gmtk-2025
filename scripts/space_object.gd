@@ -14,14 +14,10 @@ extends Area2D
 var velocity: Vector2 = Vector2.ZERO
 @export var mass: float = 1.0
 @export var orbit: bool = true
-var health: float = 0.0
-var max_health: float = 0.0
 
 func _ready() -> void:
 	if initial_vel.length() > 0.0:
 		velocity = initial_vel
-	health = mass
-	max_health = health
 
 func simulate_physics(delta: float) -> void:
 	position += velocity * delta / 2.0

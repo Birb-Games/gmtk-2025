@@ -7,7 +7,18 @@ var is_debris: bool = false
 const LIFETIME = 10.0
 var lifetime_timer = LIFETIME
 
+var target_scale: float = 0.0
+func _ready() -> void:
+	target_scale = scale.x
+	if !is_debris:
+		scale = Vector2.ZERO
+
 func _process(delta: float) -> void:
+	if scale.x < target_scale:
+		scale.x += delta
+		scale.x = clamp(scale.x, 0.0, target_scale)
+		scale.y = scale.x
+
 	if is_debris:
 		lifetime_timer -= delta
 	if lifetime_timer < 0.0:
@@ -27,7 +38,7 @@ func explode() -> void:
 		asteroid.scale = Vector2(asteroid_scale, asteroid_scale)
 		asteroid.is_debris = true
 		asteroid.position = position + dist * Vector2(cos(angle), sin(angle))
-		asteroid.initial_vel = Vector2(cos(angle), sin(angle)) * 80.0
+		asteroid.velocity = Vector2(cos(angle), sin(angle)) * 80.0
 		level.call_deferred("add_child", asteroid)
 	queue_free()
 
