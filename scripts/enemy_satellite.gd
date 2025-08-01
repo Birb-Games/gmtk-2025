@@ -31,7 +31,6 @@ func _ready() -> void:
 func shoot() -> void:
 	if shoot_timer > 0.0:
 		return
-	$/root/Main/Sfx/Shoot.play()
 	shoot_timer = shoot_cooldown
 	var bullet: Bullet = bullet_scene.instantiate()
 	bullet.rotation = rotation

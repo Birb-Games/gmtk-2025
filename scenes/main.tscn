@@ -14,7 +14,9 @@ script = ExtResource("1_jyhfs")
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.05, 0.05)
+scroll_offset = Vector2(0, -32)
 repeat_size = Vector2(1152, 648)
+ignore_camera_scroll = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
 z_index = -2

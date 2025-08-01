@@ -14,5 +14,5 @@ position = Vector2(0, -152)
 rotation = 3.14159
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.75, 0.75)
+ignore_rotation = false
 script = ExtResource("6_3s4jt")
