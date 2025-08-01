@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://ba4da3577syhe"]
+[gd_scene load_steps=5 format=3 uid="uid://ba4da3577syhe"]
 
+[ext_resource type="Script" uid="uid://bosn1x8yr83bl" path="res://scripts/hud.gd" id="1_1etfg"]
 [ext_resource type="Script" uid="uid://gcx0devitnh7" path="res://scripts/health.gd" id="1_fls4u"]
 [ext_resource type="FontFile" uid="uid://bs81j1klmt2d3" path="res://assets/fonts/8BitOperator/8bitOperatorPlus-Regular.ttf" id="1_qpvh6"]
+[ext_resource type="FontFile" uid="uid://b3j21gnxq1jn1" path="res://assets/fonts/8BitOperator/8bitOperatorPlus8-Bold.ttf" id="4_7hsmw"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -10,6 +12,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_1etfg")
+
+[node name="DamageFlash" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(1, 0, 0, 0.501961)
 
 [node name="Health" type="Control" parent="."]
 anchors_preset = 0
@@ -48,3 +58,22 @@ offset_right = 202.0
 offset_bottom = 54.0
 theme_override_fonts/font = ExtResource("1_qpvh6")
 text = "100%"
+
+[node name="DeathScreen" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(1, 0, 0, 0.501961)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DeathScreen"]
+layout_mode = 0
+offset_top = 209.0
+offset_right = 1152.0
+offset_bottom = 378.0
+
+[node name="Label" type="Label" parent="DeathScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_7hsmw")
+theme_override_font_sizes/font_size = 80
+text = "Game Over!"
+horizontal_alignment = 1

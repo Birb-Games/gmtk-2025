@@ -21,5 +21,6 @@ texture = ExtResource("2_0wfyh")
 [node name="Level" parent="." instance=ExtResource("4_jyhfs")]
 
 [node name="GUI" type="CanvasLayer" parent="."]
+process_mode = 3
 
 [node name="HUD" parent="GUI" instance=ExtResource("4_tbgi4")]
