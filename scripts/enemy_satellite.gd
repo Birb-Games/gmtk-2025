@@ -2,7 +2,7 @@ class_name EnemySatellite
 
 extends Area2D
 
-@onready var level: Level = $/root/Main/Planet
+@onready var level: Level = $/root/Main/Level
 
 @export var health_bar_grad: Gradient
 
@@ -72,7 +72,9 @@ func explode():
 	queue_free()
 
 func _on_area_entered(area: Area2D) -> void:
-	if area is Bullet:
+	if area is Bullet or area is Debris:
+		health -= 1
+	elif area is Asteroid and area.is_debris:
 		health -= 1
 	elif area is Player:
 		health = 0

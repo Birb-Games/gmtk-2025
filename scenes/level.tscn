@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://dhtha4j8jelh4" path="res://scripts/camera.gd" id="6_3s4jt"]
 [ext_resource type="PackedScene" uid="uid://cgx3wsdprifbh" path="res://scenes/enemy_satellite.tscn" id="7_1wmcx"]
 
-[node name="Planet" type="Node2D" node_paths=PackedStringArray("center_object")]
+[node name="Level" type="Node2D" node_paths=PackedStringArray("center_object")]
 script = ExtResource("1_h8ms6")
 center_object = NodePath("Earth")
 asteroid_scene = ExtResource("2_0k1rn")

@@ -5,7 +5,7 @@ extends Area2D
 const REVERSE_COOLDOWN: float = 0.2
 const SHOOT_COOLDOWN: float = 0.2
 
-@onready var level: Level = $/root/Main/Planet
+@onready var level: Level = $/root/Main/Level
 @export var orbital_speed: float = 100.0
 @export var speed: float = 120.0
 @export var min_dist: float = 128.0
@@ -17,6 +17,9 @@ var shoot_timer: float = 0.0
 
 const MAX_HEALTH: int = 20
 var health: int = MAX_HEALTH
+
+func get_health_perc() -> float:
+	return float(health) / float(MAX_HEALTH)
 
 func reverse_dir() -> void:
 	if reverse_timer > 0.0:
