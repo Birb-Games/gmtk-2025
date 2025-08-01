@@ -27,21 +27,27 @@ func reverse_dir() -> void:
 	if reverse_timer > 0.0:
 		return
 
-	if Input.is_action_just_pressed("left"):
-		if orbital_speed > 0.0:
-			orbital_speed *= -1.0
-			reverse_timer = REVERSE_COOLDOWN
-	if Input.is_action_just_pressed("right"):
-		if orbital_speed < 0.0:
+	var movement_angle: Angle = Angle.from_radians(-get_vel().angle())
+	var desired_movement_vector: Vector2 = Vector2(Input.get_action_strength("right") - Input.get_action_strength("left"),
+		Input.get_action_strength("down") - Input.get_action_strength("up")).normalized()
+	if desired_movement_vector.length() == 0.0:
+		print(round(movement_angle.get_degrees()))
+		return
+	var desired_movement_angle: Angle = Angle.from_radians(-desired_movement_vector.angle())
+
+	if (movement_angle.minus(desired_movement_angle)).get_degrees() > 135 and (movement_angle.minus(desired_movement_angle)).get_degrees() < 225.0:
 			orbital_speed *= -1.0
 			reverse_timer = REVERSE_COOLDOWN
 
+	print(round(movement_angle.get_degrees()), " - ", round(desired_movement_angle.get_degrees()), " = ", round((movement_angle.minus(desired_movement_angle).get_degrees())))
+
+
 func move(delta: float) -> void:
 	var dist = position.length()
-	if Input.is_action_pressed("up"):
-		dist += speed * delta
-	if Input.is_action_pressed("down"):
-		dist -= speed * delta
+	# if Input.is_action_pressed("up"):
+	# 	dist += speed * delta
+	# if Input.is_action_pressed("down"):
+	# 	dist -= speed * delta
 	var angle = position.angle()
 	dist = clamp(dist, min_dist, max_dist)
 	position = dist * Vector2(cos(angle), sin(angle))
@@ -107,3 +113,34 @@ func _on_area_entered(area: Area2D) -> void:
 		damage(1)
 	elif area is SpaceObject or area is EnemySatellite:
 		health = 0
+
+# This class is used to store angles, ensures that angles are always properly wrapped and handles units
+class Angle:
+	var angle: float
+
+	func _init(a: float) -> void:
+		self.angle = a
+
+	static func from_degrees(degrees: float) -> Angle:
+		return Angle.new(wrapf(degrees, 0, 360) * (PI / 180.0))
+
+	static func from_radians(radians: float) -> Angle:
+		return Angle.new(wrapf(radians, 0, 2 * PI))
+
+	func get_degrees() -> float:
+		return self.angle * (180.0 / PI)
+	
+	func get_radians() -> float:
+		return self.angle
+	
+	func set_degrees(degrees: float) -> void:
+		self.angle = wrapf(degrees, 0, 360) * (PI / 180.0)
+
+	func set_radians(radians: float) -> void:
+		self.angle = wrapf(radians, 0, 2 * PI)
+
+	func plus(angle: Angle) -> Angle:
+		return Angle.from_radians(wrapf(self.angle + angle.angle, 0, 2 * PI))
+
+	func minus(angle: Angle) -> Angle:
+		return Angle.from_radians(wrapf(self.angle - angle.angle, 0, 2 * PI))
