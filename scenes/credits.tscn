@@ -1,14 +1,84 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnxvyl86ygh4h"]
+[gd_scene load_steps=5 format=3 uid="uid://cnxvyl86ygh4h"]
 
 [ext_resource type="Texture2D" uid="uid://dsq5rgehdjua3" path="res://assets/textures/space.png" id="1_0bpdh"]
+[ext_resource type="Theme" uid="uid://ca4fjx3thf2g7" path="res://assets/theme.tres" id="2_2ckv8"]
+[ext_resource type="Script" uid="uid://d1dspet8ujiyd" path="res://scripts/credits.gd" id="2_2fbfq"]
+[ext_resource type="FontFile" uid="uid://b3j21gnxq1jn1" path="res://assets/fonts/8BitOperator/8bitOperatorPlus8-Bold.ttf" id="3_0ctdu"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme = ExtResource("2_2ckv8")
+script = ExtResource("2_2fbfq")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(578, 325)
 scale = Vector2(1.34815, 1.34815)
 texture = ExtResource("1_0bpdh")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 115.0
+offset_right = 1105.0
+offset_bottom = 505.0
+text = "Developed by Nullptr Error, gldeA
+
+(c) Birb Games 2025
+
+Created for the 2025 Game Maker's Toolkit Game Jam.
+
+Made with <3 using Godot.
+
+THIRD PARTY ARTWORK/RESOURCES USED:
+-----------------------------------
+
+Font: 8BitOperator 
+by Grand Chaos Productions (http://grandchaos9000.deviantart.com)
+License: SIL Open Font License
+
+File: explosion.wav
+Author: Michel Baradari
+URL: https://opengameart.org/content/rumbleexplosion
+License: CC-BY 3.0 (https://creativecommons.org/licenses/by/3.0/)
+Modifictations: converted from flac to wav.
+
+File: hit.wav
+Author: Iwan 'qubodup' Gabovitch (http://opengameart.org/users/qubodup)
+URL: https://opengameart.org/content/impact
+License: CC0
+
+File: asteroid_explosion.wav
+Author: dklon (https://opengameart.org/users/dklon)
+URL: https://opengameart.org/content/boom-pack-2
+License: CC-BY 3.0 (https://creativecommons.org/licenses/by/3.0/)
+Notes: Used explosion_5.wav in \"Boom Pack 2\"."
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 35.0
+offset_right = 320.0
+offset_bottom = 80.0
+theme_override_fonts/font = ExtResource("3_0ctdu")
+theme_override_font_sizes/font_size = 80
+text = "CREDITS"
+
+[node name="ReturnToMain" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 504.0
+offset_right = 405.0
+offset_bottom = 567.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Return to Main Menu"
+
+[connection signal="pressed" from="ReturnToMain" to="." method="_on_return_to_main_pressed"]
