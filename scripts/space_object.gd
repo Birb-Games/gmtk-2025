@@ -42,4 +42,3 @@ func set_orbit(center_object: SpaceObject) -> void:
 	velocity = dir.normalized() * speed
 	if randi() % 2 == 0:
 		velocity *= -1.0
-

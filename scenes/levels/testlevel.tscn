@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://vx2lbfap8cc2"]
+
+[ext_resource type="PackedScene" uid="uid://2oltjvbyir1q" path="res://scenes/levels/level.tscn" id="1_gwqra"]
+[ext_resource type="PackedScene" uid="uid://rl7rou56kuhg" path="res://scenes/space_objects/earth.tscn" id="2_r1rxo"]
+[ext_resource type="PackedScene" uid="uid://cfnsaojiroi77" path="res://scenes/space_objects/moon.tscn" id="3_ixee3"]
+[ext_resource type="PackedScene" uid="uid://cgx3wsdprifbh" path="res://scenes/satellites/enemy_satellite.tscn" id="4_dxtel"]
+
+[node name="Level" instance=ExtResource("1_gwqra")]
+
+[node name="Earth" parent="." index="2" instance=ExtResource("2_r1rxo")]
+
+[node name="TestMoon" parent="." index="3" instance=ExtResource("3_ixee3")]
+position = Vector2(258, 0)
+
+[node name="EnemySatellite" parent="." index="4" instance=ExtResource("4_dxtel")]
+position = Vector2(0, 350)
+
+[connection signal="area_entered" from="Earth" to="Earth" method="_on_area_entered"]
