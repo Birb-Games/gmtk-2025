@@ -1,9 +1,55 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsxmo3loqjgey"]
+[gd_scene load_steps=15 format=3 uid="uid://dsxmo3loqjgey"]
 
 [ext_resource type="Theme" uid="uid://ca4fjx3thf2g7" path="res://assets/theme.tres" id="1_ekxnf"]
 [ext_resource type="Script" uid="uid://bv62477lyoqed" path="res://scripts/main_menu.gd" id="2_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://dsq5rgehdjua3" path="res://assets/textures/space.png" id="3_bqqt6"]
 [ext_resource type="FontFile" uid="uid://b3j21gnxq1jn1" path="res://assets/fonts/8BitOperator/8bitOperatorPlus8-Bold.ttf" id="4_wu84c"]
+[ext_resource type="Texture2D" uid="uid://cefcp8xl4mse0" path="res://assets/textures/rogue_planet.png" id="5_8ln24"]
+[ext_resource type="Texture2D" uid="uid://rjsysmwym2tc" path="res://assets/textures/enemy_satellite1.png" id="6_oa1go"]
+[ext_resource type="Script" uid="uid://20ha62frq61c" path="res://scripts/space_sprite.gd" id="6_rtw2f"]
+[ext_resource type="Texture2D" uid="uid://cyc277ke1frt4" path="res://assets/textures/satellite.png" id="7_jk1qb"]
+[ext_resource type="Script" uid="uid://11ctwfjb6n17" path="res://scripts/menu_satellite.gd" id="7_tbmy8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbmy8"]
+atlas = ExtResource("6_oa1go")
+region = Rect2(0, 0, 46, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jk1qb"]
+atlas = ExtResource("6_oa1go")
+region = Rect2(46, 0, 46, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dd4i"]
+atlas = ExtResource("7_jk1qb")
+region = Rect2(0, 0, 56, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgwnu"]
+atlas = ExtResource("7_jk1qb")
+region = Rect2(56, 0, 56, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rtw2f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbmy8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jk1qb")
+}],
+"loop": true,
+"name": &"animation1",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dd4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgwnu")
+}],
+"loop": true,
+"name": &"animation2",
+"speed": 2.0
+}]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -18,6 +64,21 @@ position = Vector2(578, 325)
 scale = Vector2(1.34815, 1.34815)
 texture = ExtResource("3_bqqt6")
 
+[node name="RoguePlanet" type="Sprite2D" parent="."]
+position = Vector2(872, 485)
+scale = Vector2(7.625, 7.625)
+texture = ExtResource("5_8ln24")
+script = ExtResource("6_rtw2f")
+rotation_speed = 0.4
+
+[node name="Satellite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-256, 350)
+scale = Vector2(5.47826, 5.47826)
+sprite_frames = SubResource("SpriteFrames_rtw2f")
+animation = &"animation1"
+autoplay = "animation1"
+script = ExtResource("7_tbmy8")
+
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
@@ -28,6 +89,9 @@ offset_top = 112.0
 offset_right = 246.0
 offset_bottom = 168.0
 grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0.589096, 0.589096, 0.589096, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
 theme_override_fonts/font = ExtResource("4_wu84c")
 theme_override_font_sizes/font_size = 72
 text = "Placeholder Title"

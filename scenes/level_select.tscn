@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://efsx1csh0p57"]
+[gd_scene load_steps=5 format=3 uid="uid://efsx1csh0p57"]
 
 [ext_resource type="Theme" uid="uid://ca4fjx3thf2g7" path="res://assets/theme.tres" id="1_3shnc"]
 [ext_resource type="Script" uid="uid://dyldtgab025cn" path="res://scripts/level_select.gd" id="2_p0wlc"]
+[ext_resource type="FontFile" uid="uid://b3j21gnxq1jn1" path="res://assets/fonts/8BitOperator/8bitOperatorPlus8-Bold.ttf" id="4_chg43"]
 [ext_resource type="Texture2D" uid="uid://dsq5rgehdjua3" path="res://assets/textures/space.png" id="4_rif6e"]
 
 [node name="LevelSelect" type="Control"]
@@ -22,12 +23,13 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -526.5
-offset_top = 40.0
-offset_right = -209.5
-offset_bottom = 75.0
+offset_left = -497.5
+offset_top = 72.0
+offset_right = -14.5
+offset_bottom = 117.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 48
+theme_override_fonts/font = ExtResource("4_chg43")
+theme_override_font_sizes/font_size = 64
 text = "Level Select"
 
 [node name="GridContainer" type="GridContainer" parent="."]
@@ -37,9 +39,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -426.0
+offset_left = -402.0
 offset_top = -142.0
-offset_right = -386.0
+offset_right = -362.0
 offset_bottom = -102.0
 grow_horizontal = 2
 grow_vertical = 2
