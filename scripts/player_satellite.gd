@@ -3,7 +3,7 @@ class_name Player
 extends Area2D
 
 const REVERSE_COOLDOWN: float = 0.2
-const SHOOT_COOLDOWN: float = 0.2
+const SHOOT_COOLDOWN: float = 0.3
 
 @onready var level: Level = $/root/Main/Level
 @export var orbital_speed: float = 100.0
@@ -63,7 +63,8 @@ func _process(delta: float) -> void:
 	if damage_timer > 0.0:	
 		damage_timer -= delta
 
-	move(delta)
+	if !level.cleared:
+		move(delta)
 	# Rotate around center (0, 0)
 	position += get_vel() * delta
 
@@ -72,11 +73,12 @@ func _process(delta: float) -> void:
 	var angle = diff.angle()
 	rotation = angle + PI / 2.0	
 
-	reverse_timer -= delta
-	reverse_dir()
+	if !level.cleared:
+		reverse_timer -= delta
+		reverse_dir()
 
-	shoot_timer -= delta
-	shoot()
+		shoot_timer -= delta
+		shoot()
 
 	if health <= 0:
 		explode()
