@@ -51,11 +51,13 @@ func shoot() -> void:
 		bullet.position = $BulletSpawnPos.global_position
 		level.add_child(bullet)
 
+func get_vel() -> Vector2:
+	return Vector2(-position.y, position.x).normalized() * orbital_speed
+
 func _process(delta: float) -> void:
 	move(delta)
 	# Rotate around center (0, 0)
-	var vel = Vector2(-position.y, position.x).normalized()
-	position += vel * orbital_speed * delta
+	position += get_vel() * delta
 
 	# Set rotation
 	var diff = get_global_mouse_position() - global_position
@@ -89,7 +91,7 @@ func _on_area_entered(area: Area2D) -> void:
 			health -= 1
 		else:
 			health = 0
-	elif area is Debris:
+	elif area is Debris or area is Bullet:
 		health -= 1
-	elif area is SpaceObject:
+	elif area is SpaceObject or area is EnemySatellite:
 		health = 0
