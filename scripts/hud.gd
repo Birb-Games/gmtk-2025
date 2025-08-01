@@ -21,6 +21,13 @@ func _process(_delta: float) -> void:
 		hide()
 		return
 
+	var enemy_count = level_loaded.get_enemy_count()
+	if enemy_count > 0:
+		$EnemyCounter.show()
+		$EnemyCounter.text = "Enemies Remaining: %d" % enemy_count
+	else:
+		$EnemyCounter.hide()
+
 	var player: Player = get_node_or_null("/root/Main/Level/PlayerSatellite")
 	if player:
 		if player.damage_timer > 0.0:
