@@ -13,8 +13,6 @@ var velocity: Vector2 = Vector2.ZERO
 @export var mass: float = 1.0
 @export var orbit: bool = true
 
-var asteroid_debris: PackedScene = preload("res://scenes/asteroid.tscn")
-
 func _ready() -> void:
 	if initial_vel.length() > 0.0:
 		velocity = initial_vel
