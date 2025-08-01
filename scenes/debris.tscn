@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dir8wcbllcrq7"]
+[gd_scene load_steps=5 format=3 uid="uid://dir8wcbllcrq7"]
 
 [ext_resource type="PackedScene" uid="uid://x5sp1y0y178q" path="res://scenes/space_object.tscn" id="1_s4vdx"]
 [ext_resource type="Texture2D" uid="uid://dancjjfamfb8r" path="res://assets/textures/debris.png" id="2_1ysct"]
 [ext_resource type="Script" uid="uid://dt87asenpbhwq" path="res://scripts/debris.gd" id="2_fmh6o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ysct"]
+radius = 13.0384
 
 [node name="Debris" instance=ExtResource("1_s4vdx")]
 script = ExtResource("2_fmh6o")
@@ -12,5 +15,8 @@ mass = 0.1
 scale = Vector2(3, 3)
 texture = ExtResource("2_1ysct")
 rotation_speed = 0.196
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_1ysct")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

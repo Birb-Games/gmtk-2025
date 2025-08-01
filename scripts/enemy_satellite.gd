@@ -8,7 +8,6 @@ extends Area2D
 
 @export var shoot_cooldown: float = 1.0
 @export var orbital_speed: float = 100.0
-@export var speed: float = 120.0
 @export var bullet_scene: PackedScene
 @export var debris_scene: PackedScene
 var shoot_timer: float = 0.0
@@ -16,11 +15,18 @@ var shoot_timer: float = 0.0
 @export var max_health: int = 10
 var health: int
 
+func target_player() -> void:
+	var player = level.get_node_or_null("PlayerSatellite")
+	if player != null:
+		var angle = (player.position - position).angle() + deg_to_rad(90.0)
+		rotation += angle
+
 func _ready() -> void:
 	shoot_timer = shoot_cooldown
 	health = max_health
 	if randi() % 2 == 0:
 		orbital_speed *= -1.0
+	target_player()
 
 func shoot() -> void:
 	if shoot_timer > 0.0:
@@ -38,16 +44,20 @@ func get_vel() -> Vector2:
 func get_health_perc() -> float:
 	return clamp(float(health) / float(max_health), 0.0, 1.0)
 
-func _process(delta: float) -> void:
-	# Rotate around center (0, 0)
-	position += get_vel() * delta
-	# Set rotation
+func update_rotation(delta: float) -> void:
 	var player = level.get_node_or_null("PlayerSatellite")
 	if player != null:
 		var angle = (player.position - position).angle() + deg_to_rad(90.0)
-		rotation = angle
+		rotation += (angle - rotation) * delta
+
+func _process(delta: float) -> void:
+	# Rotate around center (0, 0)
+	position += get_vel() * delta
+	update_rotation(delta)
+
+	var player = level.get_node_or_null("PlayerSatellite")
+	if player != null:
 		shoot_timer -= delta
-	
 	shoot()
 
 	if health <= 0:
@@ -61,6 +71,7 @@ func _process(delta: float) -> void:
 	$Background/Healthbar.color = health_bar_grad.sample(get_health_perc())
 
 func explode():
+	$/root/Main/Sfx/Explosion.play()
 	for i in range(15):
 		var angle = randf() * 2.0 * PI
 		var debris: SpaceObject = debris_scene.instantiate()

@@ -32,6 +32,8 @@ func explode() -> void:
 	var asteroid_count = randi_range(8, 12)
 	if is_debris:
 		asteroid_count = 0
+	if asteroid_count > 0:
+		$/root/Main/Sfx/AsteroidExplosion.play()
 	for i in range(asteroid_count):
 		var angle = randf() * 2.0 * PI
 		var asteroid: SpaceObject = asteroid_scene.instantiate()

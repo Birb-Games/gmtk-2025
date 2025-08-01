@@ -4,3 +4,20 @@ THIRD PARTY ARTWORK/RESOURCES USED:
 Font: 8BitOperator 
 by Grand Chaos Productions (http://grandchaos9000.deviantart.com)
 License: SIL Open Font License
+
+File: explosion.wav
+Author: Michel Baradari
+URL: https://opengameart.org/content/rumbleexplosion
+License: CC-BY 3.0 (https://creativecommons.org/licenses/by/3.0/)
+Modifictations: converted from flac to wav.
+
+File: hit.wav
+Author: Iwan 'qubodup' Gabovitch (http://opengameart.org/users/qubodup)
+URL: https://opengameart.org/content/impact
+License: CC0
+
+File: asteroid_explosion.wav
+Author: dklon (https://opengameart.org/users/dklon)
+URL: https://opengameart.org/content/boom-pack-2
+License: CC-BY 3.0 (https://creativecommons.org/licenses/by/3.0/)
+Notes: Used explosion_5.wav in "Boom Pack 2".

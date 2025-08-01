@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cfnsaojiroi77" path="res://scenes/space_objects/moon.tscn" id="3_dd0lh"]
 [ext_resource type="PackedScene" uid="uid://cgx3wsdprifbh" path="res://scenes/satellites/enemy_satellite.tscn" id="4_bfxgj"]
 
-[node name="Level" node_paths=PackedStringArray("center_object") instance=ExtResource("1_x6ivy")]
+[node name="Level2" node_paths=PackedStringArray("center_object") instance=ExtResource("1_x6ivy")]
 center_object = NodePath("Earth")
 
 [node name="Earth" parent="." index="2" instance=ExtResource("2_4tcl0")]

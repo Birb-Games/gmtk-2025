@@ -9,6 +9,8 @@ extends Node2D
 # Set this to be 0.0 to disable asteroid spawning
 @export var asteroid_spawn_time: float = 10.0
 var asteroid_timer: float
+# Cleared all enemies
+var cleared: bool = false
 
 func _ready() -> void:
 	asteroid_timer = asteroid_spawn_time / 2.0
@@ -29,6 +31,8 @@ func _ready() -> void:
 			child.set_orbit(center_object)
 
 func spawn_asteroid() -> void:
+	if cleared:
+		return
 	# Spawn asteroid
 	var asteroid: SpaceObject = asteroid_scene.instantiate()
 	var player_satellite = get_node_or_null("PlayerSatellite")
@@ -45,6 +49,9 @@ func spawn_asteroid() -> void:
 	add_child(asteroid)
 
 func _process(delta: float) -> void:
+	if get_enemy_count() == 0:
+		cleared = true
+
 	if asteroid_spawn_time > 0.0:
 		asteroid_timer -= delta
 	if asteroid_timer < 0.0 and asteroid_spawn_time > 0.0:
@@ -61,3 +68,10 @@ func get_total_gravity_force(object: SpaceObject) -> Vector2:
 				continue
 			total_force += GravitySim.get_gravity_force(object, child)
 	return total_force
+
+func get_enemy_count() -> int:
+	var count: int = 0
+	for child in get_children():
+		if child is EnemySatellite:
+			count += 1
+	return count
