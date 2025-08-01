@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://d0dmficfh1ng4"]
+[gd_scene load_steps=8 format=3 uid="uid://d0dmficfh1ng4"]
 
 [ext_resource type="Script" uid="uid://do4ophba58a5u" path="res://scripts/main.gd" id="1_jyhfs"]
-[ext_resource type="Texture2D" uid="uid://dsq5rgehdjua3" path="res://assets/textures/space.png" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://csi6i1sy1v5be" path="res://scenes/levels/level1.tscn" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://ba4da3577syhe" path="res://scenes/HUD.tscn" id="4_tbgi4"]
 [ext_resource type="AudioStream" uid="uid://ditndhvvs6l4l" path="res://assets/sfx/explosion.wav" id="5_tbgi4"]
@@ -11,18 +10,6 @@
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_jyhfs")
-
-[node name="Parallax2D" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.05, 0.05)
-scroll_offset = Vector2(0, -32)
-repeat_size = Vector2(1152, 648)
-ignore_camera_scroll = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
-z_index = -2
-position = Vector2(576, 324)
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("2_0wfyh")
 
 [node name="Level" parent="." instance=ExtResource("3_jyhfs")]
 

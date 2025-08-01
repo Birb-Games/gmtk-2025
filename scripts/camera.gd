@@ -15,7 +15,6 @@ func _process(_delta: float) -> void:
 	elif Input.is_action_just_pressed("zoom_camera_in"):
 		zoom *= 1.1
 	# Adjust the background coverage
-	$/root/Main/Parallax2D.repeat_times = (1 / zoom.x) * 2.0 + 2
-	$/root/Main/Parallax2D.rotation = rotation
 	zoom.x = clamp(zoom.x, MIN_ZOOM, MAX_ZOOM)
 	zoom.y = zoom.x
+	$Background.scale = Vector2(1.0 / zoom.x, 1.0 / zoom.y) * 2.0
