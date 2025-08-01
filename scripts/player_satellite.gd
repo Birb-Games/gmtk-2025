@@ -5,7 +5,7 @@ extends Area2D
 const REVERSE_COOLDOWN: float = 0.2
 const SHOOT_COOLDOWN: float = 0.3
 
-@onready var level: Level = $/root/Main/Level
+@onready var level: Level = get_parent()
 @export var orbital_speed: float = 100.0
 @export var speed: float = 120.0
 @export var min_dist: float = 128.0
