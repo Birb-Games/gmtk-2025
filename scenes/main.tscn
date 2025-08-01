@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0dmficfh1ng4"]
+[gd_scene load_steps=9 format=3 uid="uid://d0dmficfh1ng4"]
 
 [ext_resource type="Script" uid="uid://do4ophba58a5u" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://dsq5rgehdjua3" path="res://assets/textures/space.png" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://csi6i1sy1v5be" path="res://scenes/levels/level1.tscn" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://ba4da3577syhe" path="res://scenes/HUD.tscn" id="4_tbgi4"]
+[ext_resource type="AudioStream" uid="uid://ditndhvvs6l4l" path="res://assets/sfx/explosion.wav" id="5_tbgi4"]
+[ext_resource type="AudioStream" uid="uid://dicjshmbik8o4" path="res://assets/sfx/shoot.wav" id="6_tefeu"]
+[ext_resource type="AudioStream" uid="uid://dsj5qpr3787ca" path="res://assets/sfx/hit.wav" id="7_o6xl0"]
+[ext_resource type="AudioStream" uid="uid://bjmdruip2a76d" path="res://assets/sfx/asteroid_explosion.wav" id="8_tipki"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_jyhfs")
@@ -24,3 +28,24 @@ texture = ExtResource("2_0wfyh")
 process_mode = 3
 
 [node name="HUD" parent="GUI" instance=ExtResource("4_tbgi4")]
+
+[node name="Sfx" type="Node" parent="."]
+
+[node name="Shoot" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource("6_tefeu")
+volume_db = -16.0
+max_polyphony = 16
+
+[node name="Explosion" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource("5_tbgi4")
+volume_db = -5.0
+max_polyphony = 8
+
+[node name="Hit" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource("7_o6xl0")
+volume_db = -20.0
+
+[node name="AsteroidExplosion" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource("8_tipki")
+volume_db = -5.0
+max_polyphony = 8

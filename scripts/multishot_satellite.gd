@@ -8,6 +8,7 @@ func shoot() -> void:
 	if shoot_timer > 0.0:
 		return
 
+	$/root/Main/Sfx/Shoot.play()
 	for i in range(0, bullet_count):
 		shoot_timer = shoot_cooldown
 		var bullet: Bullet = bullet_scene.instantiate()

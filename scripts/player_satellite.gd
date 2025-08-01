@@ -50,6 +50,7 @@ func shoot() -> void:
 	if shoot_timer > 0.0:
 		return
 	if Input.is_action_pressed("shoot"):
+		$/root/Main/Sfx/Shoot.play()
 		shoot_timer = SHOOT_COOLDOWN
 		var bullet: Bullet = bullet_scene.instantiate()
 		bullet.rotation = rotation
@@ -84,6 +85,7 @@ func _process(delta: float) -> void:
 		explode()
 
 func explode():
+	$/root/Main/Sfx/Explosion.play()
 	for i in range(15):
 		var angle = randf() * 2.0 * PI
 		var debris: SpaceObject = debris_scene.instantiate()
@@ -96,6 +98,7 @@ func explode():
 	queue_free()
 
 func damage(amt: int) -> void:
+	$/root/Main/Sfx/Hit.play()
 	health -= amt
 	damage_timer = DAMAGE_TIME
 

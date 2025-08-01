@@ -31,6 +31,7 @@ func _ready() -> void:
 func shoot() -> void:
 	if shoot_timer > 0.0:
 		return
+	$/root/Main/Sfx/Shoot.play()
 	shoot_timer = shoot_cooldown
 	var bullet: Bullet = bullet_scene.instantiate()
 	bullet.rotation = rotation
@@ -71,6 +72,7 @@ func _process(delta: float) -> void:
 	$Background/Healthbar.color = health_bar_grad.sample(get_health_perc())
 
 func explode():
+	$/root/Main/Sfx/Explosion.play()
 	for i in range(15):
 		var angle = randf() * 2.0 * PI
 		var debris: SpaceObject = debris_scene.instantiate()
