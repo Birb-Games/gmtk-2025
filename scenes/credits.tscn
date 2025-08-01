@@ -1,7 +1,14 @@
-[gd_scene format=3 uid="uid://cnxvyl86ygh4h"]
+[gd_scene load_steps=2 format=3 uid="uid://cnxvyl86ygh4h"]
+
+[ext_resource type="Texture2D" uid="uid://dsq5rgehdjua3" path="res://assets/textures/space.png" id="1_0bpdh"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(578, 325)
+scale = Vector2(1.34815, 1.34815)
+texture = ExtResource("1_0bpdh")

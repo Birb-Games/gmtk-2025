@@ -21,6 +21,7 @@ func _process(_delta: float) -> void:
 		hide()
 		return
 
+	show()
 	var enemy_count = level_loaded.get_enemy_count()
 	if enemy_count > 0:
 		$EnemyCounter.show()

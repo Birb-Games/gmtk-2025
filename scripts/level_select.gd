@@ -1,5 +1,7 @@
 extends Control
 
+@onready var main_menu = $/root/Main/GUI/MainMenu
+
 var level_select_button_script: Script = preload("res://scripts/level_select_button.gd")
 
 func _ready() -> void:
@@ -18,5 +20,5 @@ func _ready() -> void:
 				$GridContainer.add_child(button)
 
 func _on_return_to_main_pressed() -> void:
-	get_parent().add_child(preload("res://scenes/main_menu.tscn").instantiate())
-	queue_free()
+	main_menu.show()
+	hide()

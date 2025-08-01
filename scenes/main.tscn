@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0dmficfh1ng4"]
+[gd_scene load_steps=10 format=3 uid="uid://d0dmficfh1ng4"]
 
 [ext_resource type="Script" uid="uid://do4ophba58a5u" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://dsxmo3loqjgey" path="res://scenes/main_menu.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://ba4da3577syhe" path="res://scenes/HUD.tscn" id="4_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://cnxvyl86ygh4h" path="res://scenes/credits.tscn" id="4_tipki"]
+[ext_resource type="PackedScene" uid="uid://efsx1csh0p57" path="res://scenes/level_select.tscn" id="5_85g3d"]
 [ext_resource type="AudioStream" uid="uid://ditndhvvs6l4l" path="res://assets/sfx/explosion.wav" id="5_tbgi4"]
 [ext_resource type="AudioStream" uid="uid://dicjshmbik8o4" path="res://assets/sfx/shoot.wav" id="6_tefeu"]
 [ext_resource type="AudioStream" uid="uid://dsj5qpr3787ca" path="res://assets/sfx/hit.wav" id="7_o6xl0"]
@@ -14,6 +17,15 @@ script = ExtResource("1_jyhfs")
 process_mode = 3
 
 [node name="MainMenu" parent="GUI" instance=ExtResource("4_jyhfs")]
+
+[node name="HUD" parent="GUI" instance=ExtResource("4_tbgi4")]
+visible = false
+
+[node name="Credits" parent="GUI" instance=ExtResource("4_tipki")]
+visible = false
+
+[node name="LevelSelect" parent="GUI" instance=ExtResource("5_85g3d")]
+visible = false
 
 [node name="Sfx" type="Node" parent="."]
 
