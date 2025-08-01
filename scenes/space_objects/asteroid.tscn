@@ -1,14 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgc6sxp0v4uf6"]
+[gd_scene load_steps=4 format=3 uid="uid://dgc6sxp0v4uf6"]
 
 [ext_resource type="PackedScene" uid="uid://x5sp1y0y178q" path="res://scenes/space_object.tscn" id="1_akfqu"]
 [ext_resource type="Texture2D" uid="uid://btrlelldsucg5" path="res://assets/textures/asteroid.png" id="2_6mo6b"]
+[ext_resource type="Script" uid="uid://ski7m00lfjcb" path="res://scripts/asteroid.gd" id="2_t4se3"]
 
 [node name="Asteroid" instance=ExtResource("1_akfqu")]
-scale = Vector2(0.25, 0.25)
+script = ExtResource("2_t4se3")
 mass = 0.1
-is_asteroid = true
 
 [node name="Sprite2D" parent="." index="0"]
-scale = Vector2(2, 2)
 texture = ExtResource("2_6mo6b")
-rotation_speed = 5.0
+rotation_speed = 2.5
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

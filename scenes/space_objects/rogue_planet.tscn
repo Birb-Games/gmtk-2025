@@ -4,16 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://cefcp8xl4mse0" path="res://assets/textures/rogue_planet.png" id="2_ywh3l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j3nti"]
-radius = 44.0114
+radius = 71.007
 
 [node name="RoguePlanet" instance=ExtResource("1_mgmpp")]
 mass = 200.0
-orbit_sun = false
 
 [node name="Sprite2D" parent="." index="0"]
-scale = Vector2(1.4, 1.4)
+scale = Vector2(2.25, 2.25)
 texture = ExtResource("2_ywh3l")
 rotation_speed = 2.0
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_j3nti")
+
+[node name="Node2D" type="Node2D" parent="." index="2"]

@@ -1,3 +1,5 @@
+class_name SpaceSprite
+
 extends Sprite2D
 
 # in radians
