@@ -30,19 +30,20 @@ func move(delta: float) -> void:
 	var angle_from_planet: Angle = Angle.from_radians(-(position - get_parent().position).angle())
 	var desired_movement_vector: Vector2 = Vector2(Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up")).normalized()
+	if desired_movement_vector.length() == 0.0:
+		return
 	var desired_movement_angle: Angle = Angle.from_radians(-desired_movement_vector.angle())
 
-	if reverse_timer <= 0.0 and desired_movement_vector.length() != 0.0:
-		if (movement_angle.minus(desired_movement_angle)).get_degrees() > 135 and (movement_angle.minus(desired_movement_angle)).get_degrees() < 225.0:
-				orbital_speed *= -1.0
-				reverse_timer = REVERSE_COOLDOWN
+	if (movement_angle.minus(desired_movement_angle)).get_degrees() > 135 and (movement_angle.minus(desired_movement_angle)).get_degrees() < 225.0:
+			orbital_speed *= -1.0
+			reverse_timer = REVERSE_COOLDOWN
 
-	if desired_movement_vector.length() != 0.0:
-		if (angle_from_planet.minus(desired_movement_angle)).get_degrees() > 315 or (angle_from_planet.minus(desired_movement_angle)).get_degrees() < 45:
-				dist += speed * delta
-		if (angle_from_planet.minus(desired_movement_angle)).get_degrees() > 135 and (angle_from_planet.minus(desired_movement_angle)).get_degrees() < 225.0:
-			dist -= speed * delta
-
+func move(delta: float) -> void:
+	var dist = position.length()
+	if Input.is_action_pressed("away_from_planet"):
+		dist += speed * delta
+	if Input.is_action_pressed("towards_planet"):
+		dist -= speed * delta
 	var angle = position.angle()
 	dist = clamp(dist, min_dist, max_dist)
 	position = dist * Vector2(cos(angle), sin(angle))
