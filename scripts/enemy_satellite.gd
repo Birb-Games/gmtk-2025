@@ -4,6 +4,8 @@ extends Area2D
 
 @onready var level: Level = $/root/Main/Planet
 
+@export var health_bar_grad: Gradient
+
 @export var shoot_cooldown: float = 1.0
 @export var orbital_speed: float = 100.0
 @export var speed: float = 120.0
@@ -32,6 +34,9 @@ func shoot() -> void:
 func get_vel() -> Vector2:
 	return Vector2(-position.y, position.x).normalized() * orbital_speed
 
+func get_health_perc() -> float:
+	return clamp(float(health) / float(max_health), 0.0, 1.0)
+
 func _process(delta: float) -> void:
 	# Rotate around center (0, 0)
 	position += get_vel() * delta
@@ -46,6 +51,13 @@ func _process(delta: float) -> void:
 
 	if health <= 0:
 		explode()
+
+	if get_health_perc() >= 1.0:
+		$Background.hide()
+	else:
+		$Background.show()
+	$Background/Healthbar.scale.x = get_health_perc()
+	$Background/Healthbar.color = health_bar_grad.sample(get_health_perc())
 
 func explode():
 	for i in range(15):
