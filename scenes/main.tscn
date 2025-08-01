@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0dmficfh1ng4"]
+[gd_scene load_steps=4 format=3 uid="uid://d0dmficfh1ng4"]
 
 [ext_resource type="Script" uid="uid://do4ophba58a5u" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://dsq5rgehdjua3" path="res://assets/textures/space.png" id="2_0wfyh"]
-[ext_resource type="PackedScene" uid="uid://csi6i1sy1v5be" path="res://scenes/levels/level1.tscn" id="3_jyhfs"]
-[ext_resource type="PackedScene" uid="uid://ba4da3577syhe" path="res://scenes/HUD.tscn" id="4_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://dsxmo3loqjgey" path="res://scenes/main_menu.tscn" id="4_jyhfs"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_jyhfs")
@@ -18,9 +17,7 @@ position = Vector2(576, 324)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_0wfyh")
 
-[node name="Level" parent="." instance=ExtResource("3_jyhfs")]
-
 [node name="GUI" type="CanvasLayer" parent="."]
 process_mode = 3
 
-[node name="HUD" parent="GUI" instance=ExtResource("4_tbgi4")]
+[node name="MainMenu" parent="GUI" instance=ExtResource("4_jyhfs")]
