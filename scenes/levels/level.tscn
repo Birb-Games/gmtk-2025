@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://2oltjvbyir1q"]
+
+[ext_resource type="PackedScene" uid="uid://cxo4kp71j6amn" path="res://scenes/satellites/player_satellite.tscn" id="1_cktii"]
+[ext_resource type="Script" uid="uid://do6jtfhrbmf7w" path="res://scripts/level.gd" id="1_h8ms6"]
+[ext_resource type="PackedScene" uid="uid://dgc6sxp0v4uf6" path="res://scenes/space_objects/asteroid.tscn" id="2_0k1rn"]
+[ext_resource type="Script" uid="uid://dhtha4j8jelh4" path="res://scripts/camera.gd" id="6_3s4jt"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_h8ms6")
+asteroid_scene = ExtResource("2_0k1rn")
+
+[node name="PlayerSatellite" parent="." instance=ExtResource("1_cktii")]
+position = Vector2(0, -152)
+rotation = 3.14159
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.75, 0.75)
+script = ExtResource("6_3s4jt")

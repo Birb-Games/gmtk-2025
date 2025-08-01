@@ -2,7 +2,7 @@ class_name EnemySatellite
 
 extends Area2D
 
-@onready var level: Level = $/root/Main/Planet
+@onready var level: Level = $/root/Main/Level
 
 @export var health_bar_grad: Gradient
 
@@ -29,6 +29,7 @@ func shoot() -> void:
 	var bullet: Bullet = bullet_scene.instantiate()
 	bullet.rotation = rotation
 	bullet.position = $BulletSpawnPos.global_position
+	bullet.enemy_bullet = true
 	level.add_child(bullet)
 
 func get_vel() -> Vector2:
@@ -73,6 +74,11 @@ func explode():
 
 func _on_area_entered(area: Area2D) -> void:
 	if area is Bullet:
+		if !area.enemy_bullet:
+			health -= 1
+	elif area is Debris:
+		health -= 1
+	elif area is Asteroid and area.is_debris:
 		health -= 1
 	elif area is Player:
 		health = 0

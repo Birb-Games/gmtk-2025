@@ -5,7 +5,7 @@ extends Area2D
 const REVERSE_COOLDOWN: float = 0.2
 const SHOOT_COOLDOWN: float = 0.2
 
-@onready var level: Level = $/root/Main/Planet
+@onready var level: Level = $/root/Main/Level
 @export var orbital_speed: float = 100.0
 @export var speed: float = 120.0
 @export var min_dist: float = 128.0
@@ -15,8 +15,13 @@ const SHOOT_COOLDOWN: float = 0.2
 var reverse_timer: float = 0.0
 var shoot_timer: float = 0.0
 
+const DAMAGE_TIME: float = 1.0
+var damage_timer: float = 0.0
 const MAX_HEALTH: int = 20
 var health: int = MAX_HEALTH
+
+func get_health_perc() -> float:
+	return float(health) / float(MAX_HEALTH)
 
 func reverse_dir() -> void:
 	if reverse_timer > 0.0:
@@ -55,6 +60,9 @@ func get_vel() -> Vector2:
 	return Vector2(-position.y, position.x).normalized() * orbital_speed
 
 func _process(delta: float) -> void:
+	if damage_timer > 0.0:	
+		damage_timer -= delta
+
 	move(delta)
 	# Rotate around center (0, 0)
 	position += get_vel() * delta
@@ -85,13 +93,17 @@ func explode():
 		level.call_deferred("add_child", debris)
 	queue_free()
 
+func damage(amt: int) -> void:
+	health -= amt
+	damage_timer = DAMAGE_TIME
+
 func _on_area_entered(area: Area2D) -> void:
 	if area is Asteroid:
 		if area.is_debris:
-			health -= 1
+			damage(1)
 		else:
 			health = 0
 	elif area is Debris or area is Bullet:
-		health -= 1
+		damage(1)
 	elif area is SpaceObject or area is EnemySatellite:
 		health = 0

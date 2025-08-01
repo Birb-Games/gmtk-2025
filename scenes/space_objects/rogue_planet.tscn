@@ -1,15 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0ggm7x3myuge"]
+[gd_scene load_steps=4 format=3 uid="uid://b0ggm7x3myuge"]
 
 [ext_resource type="PackedScene" uid="uid://x5sp1y0y178q" path="res://scenes/space_object.tscn" id="1_mgmpp"]
 [ext_resource type="Texture2D" uid="uid://cefcp8xl4mse0" path="res://assets/textures/rogue_planet.png" id="2_ywh3l"]
-[ext_resource type="Script" uid="uid://csos0l8dyd82p" path="res://scripts/rogue_planet.gd" id="3_ywh3l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j3nti"]
 radius = 71.007
 
 [node name="RoguePlanet" instance=ExtResource("1_mgmpp")]
 mass = 200.0
-orbit_sun = false
 
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(2.25, 2.25)
@@ -20,4 +18,3 @@ rotation_speed = 2.0
 shape = SubResource("CircleShape2D_j3nti")
 
 [node name="Node2D" type="Node2D" parent="." index="2"]
-script = ExtResource("3_ywh3l")

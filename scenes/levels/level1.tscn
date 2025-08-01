@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://csi6i1sy1v5be"]
+
+[ext_resource type="PackedScene" uid="uid://2oltjvbyir1q" path="res://scenes/levels/level.tscn" id="1_x6ivy"]
+[ext_resource type="PackedScene" uid="uid://rl7rou56kuhg" path="res://scenes/space_objects/earth.tscn" id="2_4tcl0"]
+[ext_resource type="PackedScene" uid="uid://cfnsaojiroi77" path="res://scenes/space_objects/moon.tscn" id="3_dd0lh"]
+[ext_resource type="PackedScene" uid="uid://cgx3wsdprifbh" path="res://scenes/satellites/enemy_satellite.tscn" id="4_bfxgj"]
+
+[node name="Level" node_paths=PackedStringArray("center_object") instance=ExtResource("1_x6ivy")]
+center_object = NodePath("Earth")
+
+[node name="Earth" parent="." index="2" instance=ExtResource("2_4tcl0")]
+
+[node name="Moon" parent="." index="3" instance=ExtResource("3_dd0lh")]
+position = Vector2(290, 0)
+
+[node name="EnemySatellite" parent="." index="4" instance=ExtResource("4_bfxgj")]
+position = Vector2(0, 224)
+
+[node name="EnemySatellite2" parent="." index="5" instance=ExtResource("4_bfxgj")]
+position = Vector2(0, 374)

@@ -6,6 +6,7 @@ extends Node2D
 
 @export var asteroid_scene: PackedScene
 
+# Set this to be 0.0 to disable asteroid spawning
 @export var asteroid_spawn_time: float = 10.0
 var asteroid_timer: float
 
@@ -44,8 +45,9 @@ func spawn_asteroid() -> void:
 	add_child(asteroid)
 
 func _process(delta: float) -> void:
-	asteroid_timer -= delta
-	if asteroid_timer < 0.0:
+	if asteroid_spawn_time > 0.0:
+		asteroid_timer -= delta
+	if asteroid_timer < 0.0 and asteroid_spawn_time > 0.0:
 		asteroid_timer = asteroid_spawn_time
 		spawn_asteroid()	
 

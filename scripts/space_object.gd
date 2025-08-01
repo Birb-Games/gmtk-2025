@@ -2,9 +2,7 @@ class_name SpaceObject
 
 extends Area2D
 
-@onready var level = $/root/Main/Planet
-
-@onready var asteroid_scene: PackedScene = preload("uid://dgc6sxp0v4uf6")
+@onready var level = $/root/Main/Level
 
 # If this is true, then the object will still have gravity but will not be
 # pulled by other objects
@@ -44,4 +42,3 @@ func set_orbit(center_object: SpaceObject) -> void:
 	velocity = dir.normalized() * speed
 	if randi() % 2 == 0:
 		velocity *= -1.0
-

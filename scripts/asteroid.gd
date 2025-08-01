@@ -2,6 +2,8 @@ class_name Asteroid
 
 extends SpaceObject
 
+@onready var asteroid_scene: PackedScene = preload("uid://dgc6sxp0v4uf6")
+
 var is_debris: bool = false
 
 const LIFETIME = 10.0
@@ -48,4 +50,6 @@ func _on_area_entered(area: Area2D) -> void:
 	if area is Player:
 		explode()
 	if area is SpaceObject and area is not Asteroid and area is not Debris:
+		explode()
+	if area is EnemySatellite and is_debris:
 		explode()
