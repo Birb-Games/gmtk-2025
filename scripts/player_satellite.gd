@@ -23,11 +23,11 @@ var health: int = MAX_HEALTH
 func get_health_perc() -> float:
 	return float(health) / float(MAX_HEALTH)
 
-func reverse_dir() -> void:
-	if reverse_timer > 0.0:
-		return
+func move(delta: float) -> void:
+	var dist = position.length()
 
 	var movement_angle: Angle = Angle.from_radians(-get_vel().angle())
+	var angle_from_planet: Angle = Angle.from_radians(-(position - get_parent().position).angle())
 	var desired_movement_vector: Vector2 = Vector2(Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up")).normalized()
 	if desired_movement_vector.length() == 0.0:
@@ -65,7 +65,9 @@ func _process(delta: float) -> void:
 	if damage_timer > 0.0:	
 		damage_timer -= delta
 
+	reverse_timer -= delta
 	move(delta)
+
 	# Rotate around center (0, 0)
 	position += get_vel() * delta
 
@@ -73,9 +75,6 @@ func _process(delta: float) -> void:
 	var diff = get_global_mouse_position() - global_position
 	var angle = diff.angle()
 	rotation = angle + PI / 2.0	
-
-	reverse_timer -= delta
-	reverse_dir()
 
 	shoot_timer -= delta
 	shoot()
