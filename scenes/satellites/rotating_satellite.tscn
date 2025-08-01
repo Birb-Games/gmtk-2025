@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://dwlunt4kweprj"]
+
+[ext_resource type="PackedScene" uid="uid://cgx3wsdprifbh" path="res://scenes/satellites/enemy_satellite.tscn" id="1_5so3q"]
+[ext_resource type="Texture2D" uid="uid://debx03il1glcq" path="res://assets/textures/enemy_satellite3.png" id="2_5so3q"]
+[ext_resource type="Script" uid="uid://ct715pvudpxa2" path="res://scripts/rotating_satellite.gd" id="2_n11cx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n11cx"]
+atlas = ExtResource("2_5so3q")
+region = Rect2(0, 0, 46, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1k2ld"]
+atlas = ExtResource("2_5so3q")
+region = Rect2(46, 0, 46, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1k2ld"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n11cx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1k2ld")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5so3q"]
+size = Vector2(69, 25)
+
+[node name="RotatingSatellite" instance=ExtResource("1_5so3q")]
+script = ExtResource("2_n11cx")
+rotation_speed = 180.0
+shoot_cooldown = 0.2
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_1k2ld")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-0.5, 4.5)
+shape = SubResource("RectangleShape2D_5so3q")
