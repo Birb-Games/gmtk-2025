@@ -10,4 +10,4 @@ func _ready() -> void:
 
 func _on_pressed() -> void:
 	$/root/Main.add_child(level.instantiate())
-	get_parent().get_parent().queue_free()
+	$/root/Main/GUI/LevelSelect.hide()

@@ -1,9 +1,12 @@
 extends Control
 
-func _ready() -> void:
+func reset() -> void:
 	$PauseScreen.hide()
 	$DeathScreen.hide()
 	$WinScreen.hide()
+
+func _ready() -> void:
+	reset()
 
 func set_mouse() -> void:
 	if $WinScreen.visible or $PauseScreen.visible or !visible:
@@ -57,3 +60,11 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel") and !$WinScreen.visible:
 		$PauseScreen.visible = !$PauseScreen.visible
 		get_tree().paused = $PauseScreen.visible
+
+func _on_return_to_main_menu_pressed() -> void:
+	var level = get_node_or_null("/root/Main/Level")
+	if level:
+		level.queue_free()
+	$/root/Main/GUI/MainMenu.show()
+	get_tree().paused = false
+	reset()

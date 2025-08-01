@@ -63,6 +63,16 @@ offset_bottom = 54.0
 theme_override_fonts/font = ExtResource("1_qpvh6")
 text = "100%"
 
+[node name="EnemyCounter" type="Label" parent="."]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 54.0
+offset_right = 379.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_qpvh6")
+text = "Enemies Remaining: 0"
+
 [node name="DeathScreen" type="ColorRect" parent="."]
 visible = false
 layout_mode = 0
@@ -185,7 +195,7 @@ offset_top = 297.0
 offset_right = 775.0
 offset_bottom = 403.0
 
-[node name="ReturnToGame" type="Button" parent="WinScreen/VBoxContainer2"]
+[node name="NextLevel" type="Button" parent="WinScreen/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_nysna")
@@ -204,14 +214,7 @@ theme_override_fonts/font = ExtResource("5_nysna")
 theme_override_font_sizes/font_size = 32
 text = "Quit to Menu"
 
-[node name="EnemyCounter" type="Label" parent="."]
-layout_mode = 0
-offset_left = 26.0
-offset_top = 54.0
-offset_right = 379.0
-offset_bottom = 83.0
-theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("1_qpvh6")
-text = "Enemies Remaining: 0"
-
+[connection signal="pressed" from="DeathScreen/VBoxContainer2/ReturnToMainMenu" to="." method="_on_return_to_main_menu_pressed"]
 [connection signal="pressed" from="PauseScreen/VBoxContainer2/ReturnToGame" to="PauseScreen" method="_on_return_to_game_pressed"]
+[connection signal="pressed" from="PauseScreen/VBoxContainer2/ReturnToMainMenu" to="." method="_on_return_to_main_menu_pressed"]
+[connection signal="pressed" from="WinScreen/VBoxContainer2/ReturnToMainMenu" to="." method="_on_return_to_main_menu_pressed"]
