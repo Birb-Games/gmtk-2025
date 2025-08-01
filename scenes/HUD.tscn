@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://ba4da3577syhe"]
+[gd_scene load_steps=7 format=3 uid="uid://ba4da3577syhe"]
 
 [ext_resource type="Script" uid="uid://bosn1x8yr83bl" path="res://scripts/hud.gd" id="1_1etfg"]
 [ext_resource type="Script" uid="uid://gcx0devitnh7" path="res://scripts/health.gd" id="1_fls4u"]
 [ext_resource type="FontFile" uid="uid://bs81j1klmt2d3" path="res://assets/fonts/8BitOperator/8bitOperatorPlus-Regular.ttf" id="1_qpvh6"]
 [ext_resource type="FontFile" uid="uid://b3j21gnxq1jn1" path="res://assets/fonts/8BitOperator/8bitOperatorPlus8-Bold.ttf" id="4_7hsmw"]
+[ext_resource type="Script" uid="uid://b6acf3r6wx73" path="res://scripts/pause_screen.gd" id="5_f6qnu"]
+[ext_resource type="FontFile" uid="uid://b83lr4reqbm0y" path="res://assets/fonts/8BitOperator/8bitOperatorPlus8-Regular.ttf" id="5_nysna"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -60,6 +62,7 @@ theme_override_fonts/font = ExtResource("1_qpvh6")
 text = "100%"
 
 [node name="DeathScreen" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
@@ -77,3 +80,76 @@ theme_override_fonts/font = ExtResource("4_7hsmw")
 theme_override_font_sizes/font_size = 80
 text = "Game Over!"
 horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="DeathScreen"]
+offset_left = 377.0
+offset_top = 297.0
+offset_right = 775.0
+offset_bottom = 403.0
+
+[node name="Restart" type="Button" parent="DeathScreen/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_nysna")
+theme_override_font_sizes/font_size = 32
+text = "Restart Level"
+
+[node name="Panel" type="Panel" parent="DeathScreen/VBoxContainer2"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="ReturnToMainMenu" type="Button" parent="DeathScreen/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_nysna")
+theme_override_font_sizes/font_size = 32
+text = "Quit to Menu"
+
+[node name="PauseScreen" type="ColorRect" parent="."]
+visible = false
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.25098, 0.25098, 0.25098, 0.752941)
+script = ExtResource("5_f6qnu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseScreen"]
+layout_mode = 0
+offset_left = 238.0
+offset_top = 209.0
+offset_right = 914.0
+offset_bottom = 343.0
+
+[node name="Label" type="Label" parent="PauseScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_7hsmw")
+theme_override_font_sizes/font_size = 80
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PauseScreen"]
+offset_left = 377.0
+offset_top = 297.0
+offset_right = 775.0
+offset_bottom = 403.0
+
+[node name="ReturnToGame" type="Button" parent="PauseScreen/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_nysna")
+theme_override_font_sizes/font_size = 32
+text = "Return to Game"
+
+[node name="Panel" type="Panel" parent="PauseScreen/VBoxContainer2"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="ReturnToMainMenu" type="Button" parent="PauseScreen/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_nysna")
+theme_override_font_sizes/font_size = 32
+text = "Quit to Menu"
+
+[connection signal="pressed" from="PauseScreen/VBoxContainer2/ReturnToGame" to="PauseScreen" method="_on_return_to_game_pressed"]
