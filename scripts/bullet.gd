@@ -25,3 +25,9 @@ func _process(delta: float) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area is SpaceObject:
 		queue_free()
+	elif area is EnemySatellite:
+		queue_free()
+	elif area is Player:
+		queue_free()
+	elif area is Debris:
+		queue_free()

@@ -17,3 +17,5 @@ func _on_area_entered(area: Area2D) -> void:
 		queue_free()
 	elif area is Player:
 		queue_free()
+	elif area is Bullet:
+		queue_free()
