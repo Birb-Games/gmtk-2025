@@ -2,7 +2,7 @@ class_name SpaceObject
 
 extends Area2D
 
-@onready var level = $/root/Main/Level
+@onready var level = get_parent()
 
 # If this is true, then the object will still have gravity but will not be
 # pulled by other objects

@@ -53,3 +53,5 @@ offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Return to Main Menu"
+
+[connection signal="pressed" from="ReturnToMain" to="." method="_on_return_to_main_pressed"]
