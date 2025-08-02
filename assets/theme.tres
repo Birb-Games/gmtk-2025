@@ -1,6 +1,13 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://ca4fjx3thf2g7"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://ca4fjx3thf2g7"]
 
 [ext_resource type="FontFile" uid="uid://b83lr4reqbm0y" path="res://assets/fonts/8BitOperator/8bitOperatorPlus8-Regular.ttf" id="1_5x3i2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5x3i2"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6cm7"]
 content_margin_left = 5.0
@@ -12,4 +19,5 @@ bg_color = Color(0, 0, 0, 0)
 [resource]
 default_font = ExtResource("1_5x3i2")
 default_font_size = 32
+Button/styles/disabled = SubResource("StyleBoxFlat_5x3i2")
 Button/styles/normal = SubResource("StyleBoxFlat_l6cm7")

@@ -12,6 +12,8 @@ func _ready() -> void:
 
 const BUTTON_DELAY: float = 1.0
 var screen_button_timer: float = 0.0
+var has_advanced_level: bool = false
+
 func activate_screen(screen: ColorRect) -> void:
 	if !screen.visible:
 		screen.get_node("VBoxContainer2").hide()
@@ -71,8 +73,13 @@ func _process(delta: float) -> void:
 		if !$PauseScreen.visible:
 			activate_screen($WinScreen)
 			get_tree().paused = false
+			if !has_advanced_level and $/root/Main.current_level == $/root/Main.levels_unlocked:
+				$/root/Main.unlock_next_level()
+				$/root/Main.update_current_level(true)
+			has_advanced_level = true
 		else:
 			$WinScreen.hide()
+			has_advanced_level = false
 
 	# Handle pausing
 	if Input.is_action_just_pressed("ui_cancel") and !$WinScreen.visible:
@@ -83,6 +90,8 @@ func _on_return_to_main_menu_pressed() -> void:
 	var level = get_node_or_null("/root/Main/Level")
 	if level:
 		level.queue_free()
+	
+	$/root/Main/GUI/MainMenu.update_continue_button_enabled()
 	$/root/Main/GUI/MainMenu.show()
 	get_tree().paused = false
 	reset()

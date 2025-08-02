@@ -16,9 +16,14 @@ rotation = 3.14159
 
 [node name="Camera2D" type="Camera2D" parent="."]
 ignore_rotation = false
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 0.5
+editor_draw_drag_margin = true
 script = ExtResource("6_3s4jt")
 
 [node name="Background" type="Sprite2D" parent="Camera2D"]
 z_index = -2
-scale = Vector2(1.2, 1.2)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("5_urvlt")
