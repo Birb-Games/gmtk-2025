@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cgx3wsdprifbh"]
+[gd_scene load_steps=11 format=3 uid="uid://cgx3wsdprifbh"]
 
 [ext_resource type="Script" uid="uid://cuuahylac5uu8" path="res://scripts/enemy_satellite.gd" id="1_vk63w"]
 [ext_resource type="PackedScene" uid="uid://cx3nupylfohle" path="res://scenes/bullet.tscn" id="2_6irqn"]
 [ext_resource type="PackedScene" uid="uid://dir8wcbllcrq7" path="res://scenes/debris.tscn" id="3_wuh1q"]
 [ext_resource type="Texture2D" uid="uid://rjsysmwym2tc" path="res://assets/textures/enemy_satellite1.png" id="4_6irqn"]
+[ext_resource type="PackedScene" uid="uid://cmnltvb7cr7pn" path="res://scenes/trail.tscn" id="4_y51eh"]
 
 [sub_resource type="Gradient" id="Gradient_6irqn"]
 offsets = PackedFloat32Array(0, 0.506173, 1)
@@ -39,6 +40,9 @@ script = ExtResource("1_vk63w")
 health_bar_grad = SubResource("Gradient_6irqn")
 bullet_scene = ExtResource("2_6irqn")
 debris_scene = ExtResource("3_wuh1q")
+
+[node name="Trail" parent="." instance=ExtResource("4_y51eh")]
+default_color = Color(0.493545, 0.493546, 0.493546, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfnsaojiroi77"]
+[gd_scene load_steps=5 format=3 uid="uid://cfnsaojiroi77"]
 
 [ext_resource type="PackedScene" uid="uid://x5sp1y0y178q" path="res://scenes/space_object.tscn" id="1_jmpwg"]
 [ext_resource type="Texture2D" uid="uid://cxp03devbq75m" path="res://assets/textures/moon.png" id="2_hxnfn"]
+[ext_resource type="PackedScene" uid="uid://cmnltvb7cr7pn" path="res://scenes/trail.tscn" id="3_0rx7c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cktii"]
 radius = 24.0208
@@ -15,3 +16,6 @@ texture = ExtResource("2_hxnfn")
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_cktii")
+
+[node name="Trail" parent="." index="2" instance=ExtResource("3_0rx7c")]
+default_color = Color(0.458405, 0.458405, 0.458405, 1)
