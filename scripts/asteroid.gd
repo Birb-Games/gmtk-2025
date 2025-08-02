@@ -47,7 +47,7 @@ func explode() -> void:
 	queue_free()
 
 func _on_area_entered(area: Area2D) -> void:
-	if area is Bullet:
+	if area is Bullet and !area.enemy_bullet:
 		explode()
 	if area is Player:
 		explode()

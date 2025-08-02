@@ -15,9 +15,11 @@ max_dist = 800.0
 
 [node name="Moon" parent="." index="2" instance=ExtResource("2_rdsj4")]
 position = Vector2(0, 320)
+mass = 1.0
 
 [node name="Moon2" parent="." index="3" instance=ExtResource("2_rdsj4")]
 position = Vector2(576, 0)
+mass = 1.0
 
 [node name="MediumPlanet" parent="." index="4" instance=ExtResource("3_e127x")]
 

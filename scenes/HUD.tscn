@@ -35,6 +35,10 @@ offset_left = 26.0
 offset_top = 9.0
 offset_right = 81.0
 offset_bottom = 33.0
+theme_override_colors/font_color = Color(1, 0.312295, 0.248026, 1)
+theme_override_colors/font_shadow_color = Color(0.968587, 4.98153e-06, 3.85046e-07, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
 theme_override_fonts/font = ExtResource("1_qpvh6")
 text = "Health"
 
@@ -60,6 +64,10 @@ offset_left = 161.0
 offset_top = 30.0
 offset_right = 202.0
 offset_bottom = 54.0
+theme_override_colors/font_color = Color(1, 0.313726, 0.247059, 1)
+theme_override_colors/font_shadow_color = Color(0.968627, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
 theme_override_fonts/font = ExtResource("1_qpvh6")
 text = "100%"
 
@@ -70,6 +78,9 @@ offset_top = 54.0
 offset_right = 379.0
 offset_bottom = 83.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.552941, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
 theme_override_fonts/font = ExtResource("1_qpvh6")
 text = "Enemies Remaining: 0"
 
