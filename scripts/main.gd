@@ -11,6 +11,9 @@ func load_level() -> void:
 		prev_level.name = "PrevLevel"
 		prev_level.queue_free()
 
-	var level = load("res://scenes/levels/level%d.tscn" % current_level)
-	if level:
+	var path = "res://scenes/levels/level%d.tscn" % current_level
+	if ResourceLoader.exists(path):
+		var level = load(path)
 		add_child(level.instantiate())
+	else:
+		$GUI/WinScreen.show()
