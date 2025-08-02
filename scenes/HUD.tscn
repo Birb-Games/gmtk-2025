@@ -214,7 +214,9 @@ theme_override_fonts/font = ExtResource("5_nysna")
 theme_override_font_sizes/font_size = 32
 text = "Quit to Menu"
 
+[connection signal="pressed" from="DeathScreen/VBoxContainer2/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="DeathScreen/VBoxContainer2/ReturnToMainMenu" to="." method="_on_return_to_main_menu_pressed"]
 [connection signal="pressed" from="PauseScreen/VBoxContainer2/ReturnToGame" to="PauseScreen" method="_on_return_to_game_pressed"]
 [connection signal="pressed" from="PauseScreen/VBoxContainer2/ReturnToMainMenu" to="." method="_on_return_to_main_menu_pressed"]
+[connection signal="pressed" from="WinScreen/VBoxContainer2/NextLevel" to="." method="_on_next_level_pressed"]
 [connection signal="pressed" from="WinScreen/VBoxContainer2/ReturnToMainMenu" to="." method="_on_return_to_main_menu_pressed"]

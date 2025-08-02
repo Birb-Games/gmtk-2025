@@ -17,6 +17,7 @@ func _ready() -> void:
 				button.text = level_number # Set button text to the extracted digit
 				button.name = level
 				button.set_script(level_select_button_script)
+				button.level_num = int(level_number)
 				$GridContainer.add_child(button)
 
 	var viewport_size = get_viewport_rect().size

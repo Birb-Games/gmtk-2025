@@ -13,7 +13,7 @@ const SHOOT_COOLDOWN: float = 0.3
 @export var bullet_scene: PackedScene
 @export var debris_scene: PackedScene
 var reverse_timer: float = 0.0
-var shoot_timer: float = 0.0
+var shoot_timer: float = SHOOT_COOLDOWN
 
 const DAMAGE_TIME: float = 1.0
 var damage_timer: float = 0.0

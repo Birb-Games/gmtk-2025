@@ -3,10 +3,20 @@ extends Control
 func reset() -> void:
 	$PauseScreen.hide()
 	$DeathScreen.hide()
+	$DeathScreen/VBoxContainer2.show()
 	$WinScreen.hide()
+	$WinScreen/VBoxContainer2.show()
 
 func _ready() -> void:
 	reset()
+
+const BUTTON_DELAY: float = 1.0
+var screen_button_timer: float = 0.0
+func activate_screen(screen: ColorRect) -> void:
+	if !screen.visible:
+		screen.get_node("VBoxContainer2").hide()
+		screen_button_timer = BUTTON_DELAY
+	screen.show()
 
 func set_mouse() -> void:
 	if $WinScreen.visible or $PauseScreen.visible or !visible:
@@ -14,7 +24,7 @@ func set_mouse() -> void:
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	set_mouse()
 
 	# Have the screen flash red when the player takes damage
@@ -23,6 +33,14 @@ func _process(_delta: float) -> void:
 	if !level_loaded:
 		hide()
 		return
+
+	if screen_button_timer > 0.0:
+		screen_button_timer -= delta
+
+	if $WinScreen.visible and screen_button_timer <= delta:
+		$WinScreen/VBoxContainer2.show()
+	if $DeathScreen.visible and screen_button_timer <= delta:
+		$DeathScreen/VBoxContainer2.show()
 
 	show()
 	var enemy_count = level_loaded.get_enemy_count()
@@ -44,14 +62,14 @@ func _process(_delta: float) -> void:
 
 	# Player is dead
 	if !player and !$PauseScreen.visible and !$WinScreen.visible:
-		$DeathScreen.show()
+		activate_screen($DeathScreen)
 	else:
 		$DeathScreen.hide()
 
 	# Check if the player cleared the level
 	if level_loaded.cleared and !$DeathScreen.visible:
 		if !$PauseScreen.visible:
-			$WinScreen.show()
+			activate_screen($WinScreen)
 			get_tree().paused = false
 		else:
 			$WinScreen.hide()
@@ -68,3 +86,12 @@ func _on_return_to_main_menu_pressed() -> void:
 	$/root/Main/GUI/MainMenu.show()
 	get_tree().paused = false
 	reset()
+
+func _on_restart_pressed() -> void:
+	$/root/Main.load_level()
+
+func _on_next_level_pressed() -> void:
+	$/root/Main.current_level += 1
+	$/root/Main.load_level()
+	reset()
+
