@@ -71,8 +71,11 @@ func _process(delta: float) -> void:
 
 	# Check if the player cleared the level
 	if level_loaded.cleared and !$DeathScreen.visible:
-		if !has_advanced_level and $/root/Main.current_level == $/root/Main.levels_unlocked:
-			$/root/Main.unlock_next_level()
+		if !has_advanced_level:
+			if $/root/Main.current_level == $/root/Main.levels_unlocked:
+				$/root/Main.unlock_next_level()
+			else:
+				$/root/Main.update_current_level(true)
 		has_advanced_level = true
 
 		if !$PauseScreen.visible:
@@ -100,7 +103,6 @@ func _on_restart_pressed() -> void:
 	$/root/Main.load_level()
 
 func _on_next_level_pressed() -> void:
-	$/root/Main.update_current_level(true)
 	$/root/Main.load_level()
 	reset()
 

@@ -20,6 +20,7 @@ func _ready() -> void:
 
 func unlock_next_level() -> void:
 	levels_unlocked += 1
+	current_level = levels_unlocked
 	save.set_value("", "levels_unlocked", levels_unlocked)
 	save.save("user://save.cfg")
 
