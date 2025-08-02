@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://bw5m8ah8dm4io"]
+
+[ext_resource type="PackedScene" uid="uid://2oltjvbyir1q" path="res://scenes/levels/level.tscn" id="1_2jriu"]
+[ext_resource type="PackedScene" uid="uid://1vu1wu57fds4" path="res://scenes/space_objects/giant_planet.tscn" id="2_d7ho1"]
+[ext_resource type="PackedScene" uid="uid://cgx3wsdprifbh" path="res://scenes/satellites/enemy_satellite.tscn" id="3_0ttab"]
+[ext_resource type="PackedScene" uid="uid://bf5p7gle6e1jl" path="res://scenes/asteroid_field.tscn" id="4_7jb18"]
+[ext_resource type="PackedScene" uid="uid://dwlunt4kweprj" path="res://scenes/satellites/rotating_satellite.tscn" id="5_422h2"]
+
+[node name="Level" node_paths=PackedStringArray("center_object") instance=ExtResource("1_2jriu")]
+center_object = NodePath("GiantPlanet")
+asteroid_spawn_time = 5.0
+
+[node name="PlayerSatellite" parent="." index="0"]
+position = Vector2(0, -272)
+min_dist = 200.0
+max_dist = 1000.0
+
+[node name="GiantPlanet" parent="." index="2" instance=ExtResource("2_d7ho1")]
+
+[node name="AsteroidField" parent="." index="3" instance=ExtResource("4_7jb18")]
+inner_radius = 600
+outer_radius = 1000
+asteroid_count = 120
+
+[node name="EnemySatellite" parent="." index="4" instance=ExtResource("3_0ttab")]
+position = Vector2(0, 440)
+shoot_cooldown = 0.2
+orbital_speed = 150.0
+max_health = 15
+
+[node name="EnemySatellite2" parent="." index="5" instance=ExtResource("3_0ttab")]
+position = Vector2(152, 440)
+shoot_cooldown = 0.5
+orbital_speed = 200.0
+
+[node name="EnemySatellite3" parent="." index="6" instance=ExtResource("3_0ttab")]
+position = Vector2(-152, 440)
+shoot_cooldown = 0.5
+orbital_speed = 200.0
+
+[node name="RotatingSatellite" parent="." index="7" instance=ExtResource("5_422h2")]
+position = Vector2(0, 900)
+rotation_speed = 360.0
+shoot_cooldown = 0.1
+max_health = 15
+
+[node name="RotatingSatellite2" parent="." index="8" instance=ExtResource("5_422h2")]
+position = Vector2(-112, 908)
+rotation_speed = 360.0
+shoot_cooldown = 0.1
+orbital_speed = 50.0
+max_health = 15
+
+[node name="RotatingSatellite3" parent="." index="9" instance=ExtResource("5_422h2")]
+position = Vector2(112, 908)
+rotation_speed = 360.0
+shoot_cooldown = 0.1
+orbital_speed = 50.0
+max_health = 15

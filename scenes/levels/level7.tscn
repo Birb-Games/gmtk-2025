@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c68s8w6bx5eu2"]
+
+[ext_resource type="PackedScene" uid="uid://2oltjvbyir1q" path="res://scenes/levels/level.tscn" id="1_txnnu"]
+[ext_resource type="PackedScene" uid="uid://1vu1wu57fds4" path="res://scenes/space_objects/giant_planet.tscn" id="2_geu6g"]
+
+[node name="Level" node_paths=PackedStringArray("center_object") instance=ExtResource("1_txnnu")]
+center_object = NodePath("GiantPlanet")
+
+[node name="PlayerSatellite" parent="." index="0"]
+position = Vector2(0, -272)
+min_dist = 200.0
+max_dist = 1000.0
+
+[node name="GiantPlanet" parent="." index="2" instance=ExtResource("2_geu6g")]
+modulate = Color(0, 0.490196, 1, 1)

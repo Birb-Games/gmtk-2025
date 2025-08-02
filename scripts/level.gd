@@ -41,7 +41,7 @@ func spawn_asteroid() -> void:
 	var dist = randf_range(player_satellite.min_dist, player_satellite.max_dist)
 	var angle = randf() * 2.0 * PI
 	var pos = Vector2(cos(angle), sin(angle)) * dist
-	if (pos - player_satellite.position).length() < 100.0:
+	if (pos - player_satellite.position).length() < 150.0:
 		return
 	var asteroid: SpaceObject = asteroid_scene.instantiate()
 	asteroid.position = pos
