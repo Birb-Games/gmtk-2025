@@ -141,8 +141,25 @@ layout_mode = 2
 text = "Quit"
 alignment = 0
 
+[node name="VolumeSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 913.0
+offset_top = 615.0
+offset_right = 1138.0
+offset_bottom = 631.0
+value = 100.0
+
+[node name="Label" type="Label" parent="VolumeSlider"]
+layout_mode = 0
+offset_left = -60.0
+offset_top = -4.0
+offset_right = -7.0
+offset_bottom = 19.0
+text = "Vol"
+
 [connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="VBoxContainer/SelectLevel" to="." method="_on_select_level_pressed"]
 [connection signal="pressed" from="VBoxContainer/ResetSave" to="." method="_on_reset_save_pressed"]
 [connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="value_changed" from="VolumeSlider" to="." method="_on_volume_slider_value_changed"]
