@@ -12,8 +12,9 @@ asteroid_spawn_time = 3.0
 
 [node name="PlayerSatellite" parent="." index="0"]
 position = Vector2(0, -312)
-min_dist = 0.0
+min_dist = 180.0
 max_dist = 800.0
+max_health = 25
 
 [node name="Star" parent="." index="2" instance=ExtResource("2_s1j21")]
 modulate = Color(1, 1, 0.313726, 1)
