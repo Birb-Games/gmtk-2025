@@ -17,7 +17,7 @@ var shoot_timer: float = SHOOT_COOLDOWN
 
 const DAMAGE_TIME: float = 1.0
 var damage_timer: float = 0.0
-const MAX_HEALTH: int = 40
+const MAX_HEALTH: int = 50
 var health: int = MAX_HEALTH
 
 func get_health_perc() -> float:
