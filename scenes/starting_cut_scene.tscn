@@ -64,8 +64,8 @@ grow_vertical = 2
 theme = ExtResource("1_3263u")
 script = ExtResource("2_u2fgv")
 text = Array[String](["The rogue planet started off as just another star in the sky...", "But it grew bigger and bigger...", "Our astronomers studied it and discovered that 
-the rogue planet harbored an alien civilization.", "But the aliens were hostile 
-and they began attacking the solar system!", "That is why the Voyager 3 program was started:
+the rogue planet harbored an alien civilization.", "But the aliens were hostile, 
+and they began attacking the solar system!", "That was why the Voyager 3 program was started:
 to launch satellites around the solar system 
 and destroy the attacking alien probes. ", "You are in charge of controlling the satellites
 and giving humanity a fighting chance.", "Press A/D to change your orbital direction to left/right.
