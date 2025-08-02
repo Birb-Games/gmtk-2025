@@ -12,6 +12,7 @@ asteroid_spawn_time = 0.0
 
 [node name="PlayerSatellite" parent="." index="0"]
 max_dist = 800.0
+max_health = 25
 
 [node name="Moon" parent="." index="2" instance=ExtResource("2_rdsj4")]
 position = Vector2(0, 320)
