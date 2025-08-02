@@ -7,7 +7,7 @@
 radius = 24.0208
 
 [node name="Moon" instance=ExtResource("1_jmpwg")]
-mass = 0.5
+mass = 10.0
 
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(1.5, 1.5)

@@ -4,7 +4,7 @@ extends Node2D
 @export var outer_radius: int = 300
 @export var asteroid_count: int = 16
 
-var asteroid_scene: PackedScene = preload("res://scenes/asteroid.tscn")
+var asteroid_scene: PackedScene = preload("uid://dgc6sxp0v4uf6")
 
 func _ready() -> void:
 	for i in range(asteroid_count):

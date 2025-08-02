@@ -9,6 +9,8 @@
 radius = 64.2806
 
 [node name="MediumPlanet" instance=ExtResource("1_10vya")]
+is_static = true
+mass = 100.0
 
 [node name="Atmosphere" type="Sprite2D" parent="." index="0"]
 modulate = Color(0.756863, 0.670588, 0.0117647, 0.501961)

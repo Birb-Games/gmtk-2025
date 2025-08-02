@@ -1,5 +1,48 @@
-[gd_scene load_steps=2 format=3 uid="uid://byh1tbxko718h"]
+[gd_scene load_steps=6 format=3 uid="uid://d35lbl8jgvcbu"]
 
 [ext_resource type="PackedScene" uid="uid://2oltjvbyir1q" path="res://scenes/levels/level.tscn" id="1_8rpwu"]
+[ext_resource type="PackedScene" uid="uid://cfnsaojiroi77" path="res://scenes/space_objects/moon.tscn" id="2_rdsj4"]
+[ext_resource type="PackedScene" uid="uid://dwahyx4o1w7sb" path="res://scenes/space_objects/medium_planet2.tscn" id="3_e127x"]
+[ext_resource type="PackedScene" uid="uid://cgx3wsdprifbh" path="res://scenes/satellites/enemy_satellite.tscn" id="4_heu5o"]
+[ext_resource type="PackedScene" uid="uid://dfegq4ky2hdw6" path="res://scenes/satellites/multishot_satellite.tscn" id="5_s45gt"]
 
-[node name="Level" instance=ExtResource("1_8rpwu")]
+[node name="Level" node_paths=PackedStringArray("center_object") instance=ExtResource("1_8rpwu")]
+center_object = NodePath("MediumPlanet")
+asteroid_spawn_time = 0.0
+
+[node name="PlayerSatellite" parent="." index="0"]
+max_dist = 800.0
+
+[node name="Moon" parent="." index="2" instance=ExtResource("2_rdsj4")]
+position = Vector2(0, 320)
+
+[node name="Moon2" parent="." index="3" instance=ExtResource("2_rdsj4")]
+position = Vector2(576, 0)
+
+[node name="MediumPlanet" parent="." index="4" instance=ExtResource("3_e127x")]
+
+[node name="EnemySatellite" parent="." index="5" instance=ExtResource("4_heu5o")]
+position = Vector2(0, 144)
+shoot_cooldown = 0.5
+max_health = 12
+
+[node name="EnemySatellite2" parent="." index="6" instance=ExtResource("4_heu5o")]
+position = Vector2(0, 408)
+shoot_cooldown = 0.5
+orbital_speed = 200.0
+max_health = 12
+
+[node name="MultishotSatellite" parent="." index="7" instance=ExtResource("5_s45gt")]
+position = Vector2(-136, 408)
+spread = 60.0
+shoot_cooldown = 2.0
+
+[node name="MultishotSatellite2" parent="." index="8" instance=ExtResource("5_s45gt")]
+position = Vector2(136, 408)
+spread = 60.0
+shoot_cooldown = 2.0
+
+[node name="MultishotSatellite3" parent="." index="9" instance=ExtResource("5_s45gt")]
+position = Vector2(0, 616)
+spread = 60.0
+shoot_cooldown = 1.0

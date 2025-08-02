@@ -7,6 +7,7 @@
 radius = 71.007
 
 [node name="RoguePlanet" instance=ExtResource("1_mgmpp")]
+is_static = true
 mass = 200.0
 
 [node name="Sprite2D" parent="." index="0"]

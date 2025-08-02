@@ -6,8 +6,8 @@ const REVERSE_COOLDOWN: float = 0.2
 const SHOOT_COOLDOWN: float = 0.3
 
 @onready var level: Level = get_parent()
-@export var orbital_speed: float = 100.0
-@export var speed: float = 120.0
+@export var orbital_speed: float = 120.0
+@export var speed: float = 200.0
 @export var min_dist: float = 128.0
 @export var max_dist: float = 400.0
 @export var bullet_scene: PackedScene
