@@ -4,14 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://cefcp8xl4mse0" path="res://assets/textures/rogue_planet.png" id="2_ywh3l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j3nti"]
-radius = 98.0051
+radius = 129.19
 
 [node name="RoguePlanet" instance=ExtResource("1_mgmpp")]
 is_static = true
 mass = 200.0
 
 [node name="Sprite2D" parent="." index="0"]
-scale = Vector2(3, 3)
+scale = Vector2(4, 4)
 texture = ExtResource("2_ywh3l")
 rotation_speed = 2.0
 
