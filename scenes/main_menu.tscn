@@ -105,13 +105,13 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -508.0
 offset_top = -100.0
-offset_right = -166.0
+offset_right = -258.0
 offset_bottom = 133.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="SelectLevel" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(300, 75)
+custom_minimum_size = Vector2(250, 75)
 layout_mode = 2
 text = "Select Level"
 alignment = 0

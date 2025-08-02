@@ -19,6 +19,9 @@ func _ready() -> void:
 				button.set_script(level_select_button_script)
 				$GridContainer.add_child(button)
 
+	var viewport_size = get_viewport_rect().size
+	$GridContainer.global_position.x = viewport_size.x / 2.0 - $GridContainer.columns * LevelSelectButton.BUTTON_SIZE / 2.0
+
 func _on_return_to_main_pressed() -> void:
 	main_menu.show()
 	hide()
