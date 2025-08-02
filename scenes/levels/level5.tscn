@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://cb2wwy8pjclld"]
+
+[ext_resource type="PackedScene" uid="uid://2oltjvbyir1q" path="res://scenes/levels/level.tscn" id="1_467l6"]
+[ext_resource type="PackedScene" uid="uid://1vu1wu57fds4" path="res://scenes/space_objects/giant_planet.tscn" id="2_5yen4"]
+[ext_resource type="PackedScene" uid="uid://bf5p7gle6e1jl" path="res://scenes/asteroid_field.tscn" id="3_37jyc"]
+[ext_resource type="PackedScene" uid="uid://dfegq4ky2hdw6" path="res://scenes/satellites/multishot_satellite.tscn" id="4_37jyc"]
+[ext_resource type="PackedScene" uid="uid://cfnsaojiroi77" path="res://scenes/space_objects/moon.tscn" id="4_v1pya"]
+
+[node name="Level" node_paths=PackedStringArray("center_object") instance=ExtResource("1_467l6")]
+center_object = NodePath("GiantPlanet")
+asteroid_spawn_time = 8.0
+
+[node name="PlayerSatellite" parent="." index="0"]
+position = Vector2(0, -272)
+min_dist = 200.0
+max_dist = 1000.0
+
+[node name="GiantPlanet" parent="." index="2" instance=ExtResource("2_5yen4")]
+
+[node name="AsteroidField" parent="." index="3" instance=ExtResource("3_37jyc")]
+inner_radius = 400
+outer_radius = 500
+asteroid_count = 24
+
+[node name="Moon" parent="." index="4" instance=ExtResource("4_v1pya")]
+position = Vector2(650, 0)
+mass = 1.0
+
+[node name="Moon2" parent="." index="5" instance=ExtResource("4_v1pya")]
+position = Vector2(0, 735)
+mass = 1.0
+
+[node name="Moon3" parent="." index="6" instance=ExtResource("4_v1pya")]
+position = Vector2(-800, 0)
+mass = 1.0
+
+[node name="Moon4" parent="." index="7" instance=ExtResource("4_v1pya")]
+position = Vector2(0, -575)
+mass = 1.0
+
+[node name="MultishotSatellite" parent="." index="8" instance=ExtResource("4_37jyc")]
+position = Vector2(0, 600)
+bullet_count = 5
+orbital_speed = 200.0
+max_health = 10
+
+[node name="MultishotSatellite2" parent="." index="9" instance=ExtResource("4_37jyc")]
+position = Vector2(0, 247)
+shoot_cooldown = 1.0
+max_health = 8
+
+[node name="MultishotSatellite3" parent="." index="10" instance=ExtResource("4_37jyc")]
+position = Vector2(-128, 864)
+bullet_count = 2
+orbital_speed = 200.0
+max_health = 8
+
+[node name="MultishotSatellite4" parent="." index="11" instance=ExtResource("4_37jyc")]
+position = Vector2(128, 864)
+bullet_count = 2
+orbital_speed = 200.0
+max_health = 8

@@ -5,19 +5,19 @@ extends Area2D
 const REVERSE_COOLDOWN: float = 0.2
 const SHOOT_COOLDOWN: float = 0.3
 
-@onready var level: Level = $/root/Main/Level
-@export var orbital_speed: float = 100.0
-@export var speed: float = 120.0
+@onready var level: Level = get_parent()
+@export var orbital_speed: float = 120.0
+@export var speed: float = 200.0
 @export var min_dist: float = 128.0
 @export var max_dist: float = 400.0
 @export var bullet_scene: PackedScene
 @export var debris_scene: PackedScene
 var reverse_timer: float = 0.0
-var shoot_timer: float = 0.0
+var shoot_timer: float = SHOOT_COOLDOWN
 
 const DAMAGE_TIME: float = 1.0
 var damage_timer: float = 0.0
-const MAX_HEALTH: int = 20
+const MAX_HEALTH: int = 50
 var health: int = MAX_HEALTH
 
 func get_health_perc() -> float:

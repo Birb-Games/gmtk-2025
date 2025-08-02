@@ -2,7 +2,7 @@ class_name EnemySatellite
 
 extends Area2D
 
-@onready var level: Level = $/root/Main/Level
+@onready var level: Level = get_parent()
 
 @export var health_bar_grad: Gradient
 

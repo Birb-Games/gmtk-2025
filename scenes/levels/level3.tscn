@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://byh1tbxko718h"]
+
+[ext_resource type="PackedScene" uid="uid://2oltjvbyir1q" path="res://scenes/levels/level.tscn" id="1_8rpwu"]
+[ext_resource type="PackedScene" uid="uid://ccqmsegewmpg" path="res://scenes/space_objects/star.tscn" id="2_s1j21"]
+[ext_resource type="PackedScene" uid="uid://cgx3wsdprifbh" path="res://scenes/satellites/enemy_satellite.tscn" id="3_sru4k"]
+[ext_resource type="PackedScene" uid="uid://cfnsaojiroi77" path="res://scenes/space_objects/moon.tscn" id="4_t275y"]
+[ext_resource type="PackedScene" uid="uid://dwlunt4kweprj" path="res://scenes/satellites/rotating_satellite.tscn" id="6_frjko"]
+
+[node name="Level" node_paths=PackedStringArray("center_object") instance=ExtResource("1_8rpwu")]
+center_object = NodePath("Star")
+asteroid_spawn_time = 3.0
+
+[node name="PlayerSatellite" parent="." index="0"]
+position = Vector2(0, -312)
+min_dist = 0.0
+max_dist = 800.0
+
+[node name="Star" parent="." index="2" instance=ExtResource("2_s1j21")]
+modulate = Color(1, 1, 0.313726, 1)
+
+[node name="Mercury" parent="." index="3" instance=ExtResource("4_t275y")]
+position = Vector2(456, 0)
+
+[node name="EnemySatellite" parent="." index="4" instance=ExtResource("3_sru4k")]
+position = Vector2(0, 208)
+orbital_speed = 200.0
+max_health = 15
+
+[node name="EnemySatellite2" parent="." index="5" instance=ExtResource("3_sru4k")]
+position = Vector2(-88, 264)
+orbital_speed = 200.0
+max_health = 15
+
+[node name="EnemySatellite3" parent="." index="6" instance=ExtResource("3_sru4k")]
+position = Vector2(88, 264)
+orbital_speed = 200.0
+max_health = 15
+
+[node name="RotatingSatellite" parent="." index="7" instance=ExtResource("6_frjko")]
+position = Vector2(-128, 720)
+max_health = 20
+
+[node name="RotatingSatellite2" parent="." index="8" instance=ExtResource("6_frjko")]
+position = Vector2(128, 720)
+max_health = 20

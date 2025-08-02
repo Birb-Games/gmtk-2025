@@ -1,13 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://ct61jx4jm0ffh"]
+[gd_scene load_steps=5 format=3 uid="uid://ct61jx4jm0ffh"]
 
 [ext_resource type="PackedScene" uid="uid://2oltjvbyir1q" path="res://scenes/levels/level.tscn" id="1_e0cvd"]
 [ext_resource type="PackedScene" uid="uid://dalkk1rwg2yvl" path="res://scenes/space_objects/medium_planet.tscn" id="2_nos0u"]
 [ext_resource type="PackedScene" uid="uid://cgx3wsdprifbh" path="res://scenes/satellites/enemy_satellite.tscn" id="3_71baw"]
+[ext_resource type="PackedScene" uid="uid://dfegq4ky2hdw6" path="res://scenes/satellites/multishot_satellite.tscn" id="4_niitk"]
 
-[node name="Level" instance=ExtResource("1_e0cvd")]
+[node name="Level" node_paths=PackedStringArray("center_object") instance=ExtResource("1_e0cvd")]
+center_object = NodePath("MediumPlanet")
 asteroid_spawn_time = 5.0
+
+[node name="PlayerSatellite" parent="." index="0"]
+max_dist = 640.0
 
 [node name="MediumPlanet" parent="." index="2" instance=ExtResource("2_nos0u")]
 
 [node name="EnemySatellite" parent="." index="3" instance=ExtResource("3_71baw")]
 position = Vector2(0, 288)
+orbital_speed = 200.0
+
+[node name="EnemySatellite2" parent="." index="4" instance=ExtResource("3_71baw")]
+position = Vector2(0, 392)
+shoot_cooldown = 0.5
+orbital_speed = 150.0
+
+[node name="MultishotSatellite" parent="." index="5" instance=ExtResource("4_niitk")]
+position = Vector2(0, 496)
+shoot_cooldown = 1.0

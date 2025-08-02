@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwahyx4o1w7sb"]
+
+[ext_resource type="PackedScene" uid="uid://x5sp1y0y178q" path="res://scenes/space_object.tscn" id="1_hhf5s"]
+[ext_resource type="Texture2D" uid="uid://d4ik8kphx5iig" path="res://assets/textures/planet.png" id="2_h2m5i"]
+[ext_resource type="Texture2D" uid="uid://crvjkkdg14cp8" path="res://assets/textures/medium_planet2.png" id="2_r8pe2"]
+[ext_resource type="Script" uid="uid://20ha62frq61c" path="res://scripts/space_sprite.gd" id="3_dvkbu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h2m5i"]
+radius = 64.0703
+
+[node name="MediumPlanet" instance=ExtResource("1_hhf5s")]
+is_static = true
+mass = 100.0
+
+[node name="Atmosphere" type="Sprite2D" parent="." index="0"]
+modulate = Color(1, 0.168627, 0.0117647, 0.501961)
+scale = Vector2(4.375, 4.375)
+texture = ExtResource("2_h2m5i")
+script = ExtResource("3_dvkbu")
+rotation_speed = -0.785
+
+[node name="Sprite2D" parent="." index="1"]
+scale = Vector2(2, 2)
+texture = ExtResource("2_r8pe2")
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CircleShape2D_h2m5i")

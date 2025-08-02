@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://dce4p4v4ahd7u"]
+
+[ext_resource type="PackedScene" uid="uid://2oltjvbyir1q" path="res://scenes/levels/level.tscn" id="1_mojuh"]
+[ext_resource type="PackedScene" uid="uid://1vu1wu57fds4" path="res://scenes/space_objects/giant_planet.tscn" id="2_24wxv"]
+[ext_resource type="PackedScene" uid="uid://bf5p7gle6e1jl" path="res://scenes/asteroid_field.tscn" id="3_7is54"]
+[ext_resource type="PackedScene" uid="uid://dfegq4ky2hdw6" path="res://scenes/satellites/multishot_satellite.tscn" id="3_qy8hv"]
+[ext_resource type="PackedScene" uid="uid://cfnsaojiroi77" path="res://scenes/space_objects/moon.tscn" id="4_d35ek"]
+[ext_resource type="PackedScene" uid="uid://cgx3wsdprifbh" path="res://scenes/satellites/enemy_satellite.tscn" id="4_xthml"]
+[ext_resource type="PackedScene" uid="uid://dwlunt4kweprj" path="res://scenes/satellites/rotating_satellite.tscn" id="5_7is54"]
+
+[node name="Level" node_paths=PackedStringArray("center_object") instance=ExtResource("1_mojuh")]
+center_object = NodePath("GiantPlanet")
+asteroid_spawn_time = 2.0
+
+[node name="PlayerSatellite" parent="." index="0"]
+position = Vector2(0, -272)
+min_dist = 200.0
+max_dist = 800.0
+
+[node name="GiantPlanet" parent="." index="2" instance=ExtResource("2_24wxv")]
+modulate = Color(0, 0.360784, 1, 1)
+
+[node name="AsteroidField" parent="." index="3" instance=ExtResource("3_7is54")]
+inner_radius = 500
+outer_radius = 550
+
+[node name="Moon" parent="." index="4" instance=ExtResource("4_d35ek")]
+position = Vector2(0, -650)
+
+[node name="MultishotSatellite" parent="." index="5" instance=ExtResource("3_qy8hv")]
+position = Vector2(0, 456)
+bullet_count = 6
+spread = 10.0
+shoot_cooldown = 0.1
+
+[node name="MultishotSatellite2" parent="." index="6" instance=ExtResource("3_qy8hv")]
+position = Vector2(0, 720)
+bullet_count = 6
+spread = 10.0
+shoot_cooldown = 0.1
+orbital_speed = 200.0
+max_health = 8
+
+[node name="EnemySatellite" parent="." index="7" instance=ExtResource("4_xthml")]
+position = Vector2(-103, 398)
+shoot_cooldown = 0.1
+orbital_speed = 200.0
+max_health = 5
+
+[node name="EnemySatellite2" parent="." index="8" instance=ExtResource("4_xthml")]
+position = Vector2(103, 398)
+shoot_cooldown = 0.1
+orbital_speed = 200.0
+max_health = 5
+
+[node name="RotatingSatellite" parent="." index="9" instance=ExtResource("5_7is54")]
+position = Vector2(0, 368)
+shoot_cooldown = 0.1

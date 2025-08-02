@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://efsx1csh0p57"]
+
+[ext_resource type="Theme" uid="uid://ca4fjx3thf2g7" path="res://assets/theme.tres" id="1_3shnc"]
+[ext_resource type="Script" uid="uid://dyldtgab025cn" path="res://scripts/level_select.gd" id="2_p0wlc"]
+[ext_resource type="FontFile" uid="uid://b3j21gnxq1jn1" path="res://assets/fonts/8BitOperator/8bitOperatorPlus8-Bold.ttf" id="4_chg43"]
+[ext_resource type="Texture2D" uid="uid://dsq5rgehdjua3" path="res://assets/textures/space.png" id="4_rif6e"]
+
+[node name="LevelSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme = ExtResource("1_3shnc")
+script = ExtResource("2_p0wlc")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(578, 325)
+scale = Vector2(1.34815, 1.34815)
+texture = ExtResource("4_rif6e")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -576.0
+offset_top = 72.0
+offset_right = 576.0
+offset_bottom = 117.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_chg43")
+theme_override_font_sizes/font_size = 64
+text = "Level Select"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -509.0
+offset_top = -168.0
+offset_right = 532.0
+offset_bottom = 177.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="ReturnToMain" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -198.0
+offset_top = -107.0
+offset_right = 199.0
+offset_bottom = -44.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Return to Main Menu"
+
+[connection signal="pressed" from="ReturnToMain" to="." method="_on_return_to_main_pressed"]
