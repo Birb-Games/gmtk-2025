@@ -1,6 +1,7 @@
 extends Control
 
 func reset() -> void:
+	has_advanced_level = false
 	$PauseScreen.hide()
 	$DeathScreen.hide()
 	$DeathScreen/VBoxContainer2.show()
@@ -70,16 +71,15 @@ func _process(delta: float) -> void:
 
 	# Check if the player cleared the level
 	if level_loaded.cleared and !$DeathScreen.visible:
+		if !has_advanced_level and $/root/Main.current_level == $/root/Main.levels_unlocked:
+			$/root/Main.unlock_next_level()
+		has_advanced_level = true
+
 		if !$PauseScreen.visible:
 			activate_screen($WinScreen)
-			get_tree().paused = false
-			if !has_advanced_level and $/root/Main.current_level == $/root/Main.levels_unlocked:
-				$/root/Main.unlock_next_level()
-				$/root/Main.update_current_level(true)
-			has_advanced_level = true
+			get_tree().paused = false	
 		else:
 			$WinScreen.hide()
-			has_advanced_level = false
 
 	# Handle pausing
 	if Input.is_action_just_pressed("ui_cancel") and !$WinScreen.visible:
@@ -100,7 +100,7 @@ func _on_restart_pressed() -> void:
 	$/root/Main.load_level()
 
 func _on_next_level_pressed() -> void:
-	$/root/Main.current_level += 1
+	$/root/Main.update_current_level(true)
 	$/root/Main.load_level()
 	reset()
 

@@ -9,7 +9,10 @@ func _ready() -> void:
 		$VBoxContainer/Quit.hide()
 
 func update_continue_button_enabled() -> void:
-	$VBoxContainer/Continue.disabled = $/root/Main.levels_unlocked == 1
+	if $/root/Main.levels_unlocked == 1:
+		$VBoxContainer/Continue.text = "Start"
+	else:
+		$VBoxContainer/Continue.text = "Continue"
 
 func _on_select_level_pressed() -> void:
 	hide()
@@ -28,4 +31,5 @@ func _on_continue_pressed() -> void:
 	$/root/Main/GUI/MainMenu.hide()
 
 func _on_reset_save_pressed() -> void:
-	$/root/Main.reset_save()
+	hide()
+	$/root/Main/GUI/ConfirmWipeSave.show()

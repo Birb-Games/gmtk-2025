@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://ljm2v51x3rg4"]
+
+[ext_resource type="Theme" uid="uid://ca4fjx3thf2g7" path="res://assets/theme.tres" id="1_bumgc"]
+[ext_resource type="Texture2D" uid="uid://dsq5rgehdjua3" path="res://assets/textures/space.png" id="1_ecwas"]
+[ext_resource type="Script" uid="uid://o1e0hxl370na" path="res://scripts/confirm_wipe_save.gd" id="2_wogq6"]
+[ext_resource type="FontFile" uid="uid://b3j21gnxq1jn1" path="res://assets/fonts/8BitOperator/8bitOperatorPlus8-Bold.ttf" id="3_ea4wp"]
+[ext_resource type="PackedScene" uid="uid://o31g4dri56jo" path="res://scenes/starting_cut_scene.tscn" id="3_eku8s"]
+
+[node name="ConfirmWipeSave" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_bumgc")
+script = ExtResource("2_wogq6")
+starting_cut_scene = ExtResource("3_eku8s")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(578, 325)
+scale = Vector2(1.34815, 1.34815)
+texture = ExtResource("1_ecwas")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 153.0
+offset_right = 1152.0
+offset_bottom = 228.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.469409, 0.402148, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("3_ea4wp")
+theme_override_font_sizes/font_size = 48
+text = "ARE YOU SURE YOU WANT 
+TO WIPE YOUR SAVE?
+
+THIS IS PERMANENT!"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 367.0
+offset_right = 1152.0
+offset_bottom = 460.0
+alignment = 1
+
+[node name="Cancel" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "No (Go Back)"
+
+[node name="Panel" type="Panel" parent="HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Confirm" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+text = "Yes (Delete Save!)"
+
+[connection signal="pressed" from="HBoxContainer/Cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="HBoxContainer/Confirm" to="." method="_on_confirm_pressed"]

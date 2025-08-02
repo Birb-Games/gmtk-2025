@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d0dmficfh1ng4"]
+[gd_scene load_steps=13 format=3 uid="uid://d0dmficfh1ng4"]
 
 [ext_resource type="Script" uid="uid://do4ophba58a5u" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://dsxmo3loqjgey" path="res://scenes/main_menu.tscn" id="4_jyhfs"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://dicjshmbik8o4" path="res://assets/sfx/shoot.wav" id="6_tefeu"]
 [ext_resource type="AudioStream" uid="uid://dsj5qpr3787ca" path="res://assets/sfx/hit.wav" id="7_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://o31g4dri56jo" path="res://scenes/starting_cut_scene.tscn" id="7_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://ljm2v51x3rg4" path="res://scenes/confirm_wipe_save.tscn" id="8_eb6dy"]
 [ext_resource type="AudioStream" uid="uid://bjmdruip2a76d" path="res://assets/sfx/asteroid_explosion.wav" id="8_tipki"]
 
 [node name="Main" type="Node2D"]
@@ -34,6 +35,9 @@ visible = false
 visible = false
 
 [node name="StartingCutScene" parent="GUI" instance=ExtResource("7_ya4ey")]
+
+[node name="ConfirmWipeSave" parent="GUI" instance=ExtResource("8_eb6dy")]
+visible = false
 
 [node name="Sfx" type="Node" parent="."]
 
