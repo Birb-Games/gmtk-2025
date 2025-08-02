@@ -15,6 +15,7 @@ asteroid_spawn_time = 3.0
 position = Vector2(0, -208)
 min_dist = 180.0
 max_dist = 1600.0
+max_health = 70
 
 [node name="RoguePlanet" parent="." index="2" instance=ExtResource("2_pndvc")]
 

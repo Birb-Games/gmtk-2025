@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cxo4kp71j6amn"]
+[gd_scene load_steps=10 format=3 uid="uid://cxo4kp71j6amn"]
 
 [ext_resource type="Script" uid="uid://k4d5f4j33mxx" path="res://scripts/player_satellite.gd" id="1_jnxjw"]
 [ext_resource type="Texture2D" uid="uid://cyc277ke1frt4" path="res://assets/textures/satellite.png" id="1_qonnx"]
 [ext_resource type="PackedScene" uid="uid://cx3nupylfohle" path="res://scenes/bullet.tscn" id="2_8f2cm"]
 [ext_resource type="PackedScene" uid="uid://dir8wcbllcrq7" path="res://scenes/debris.tscn" id="3_u44sl"]
+[ext_resource type="PackedScene" uid="uid://cmnltvb7cr7pn" path="res://scenes/trail.tscn" id="5_tmgyy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jnxjw"]
 atlas = ExtResource("1_qonnx")
@@ -34,6 +35,10 @@ size = Vector2(22, 19)
 script = ExtResource("1_jnxjw")
 bullet_scene = ExtResource("2_8f2cm")
 debris_scene = ExtResource("3_u44sl")
+
+[node name="Trail" parent="." instance=ExtResource("5_tmgyy")]
+width = 2.0
+default_color = Color(1, 1, 0, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)

@@ -18,11 +18,17 @@ func _ready() -> void:
 				button.name = level
 				button.set_script(level_select_button_script)
 				button.level_num = int(level_number)
+				button.disabled = level_number.to_int() > $/root/Main.levels_unlocked
 				$GridContainer.add_child(button)
 
 	var viewport_size = get_viewport_rect().size
 	$GridContainer.global_position.x = viewport_size.x / 2.0 - $GridContainer.columns * LevelSelectButton.BUTTON_SIZE / 2.0
 
+func update_unlocked_levels() -> void:
+	for button in $GridContainer.get_children():
+		button.disabled = button.level_num > $/root/Main.levels_unlocked
+
 func _on_return_to_main_pressed() -> void:
+	main_menu.update_continue_button_enabled()
 	main_menu.show()
 	hide()

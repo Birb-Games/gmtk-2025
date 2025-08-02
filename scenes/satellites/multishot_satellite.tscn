@@ -36,9 +36,12 @@ spread = 30.0
 shoot_cooldown = 0.5
 max_health = 15
 
-[node name="AnimatedSprite2D" parent="." index="0"]
+[node name="Trail" parent="." index="0"]
+default_color = Color(5.77569e-07, 0.483258, 0.232033, 1)
+
+[node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_mb2gk")
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="2"]
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_0s1xa")
