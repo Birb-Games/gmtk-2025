@@ -28,6 +28,7 @@ func _ready() -> void:
 
 func _on_skip_pressed() -> void:
 	hide()
+	$/root/Main.mark_cutscene_watched()
 	$/root/Main/GUI/MainMenu.show()
 
 var player_speed: float = 400.0
@@ -64,5 +65,6 @@ func _on_next_pressed() -> void:
 		$Next.text = "Start!"	
 	elif current_text_index >= len(text):
 		$Next.hide()
+		$/root/Main.mark_cutscene_watched()
 	set_text()
 	button_disable_timer = 1.0

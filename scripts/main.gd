@@ -14,7 +14,9 @@ func _ready() -> void:
 		current_level = save.get_value("", "current_level", 1)
 		has_watched_cutscene = save.get_value("", "has_watched_cutscene", false)
 	
-	$/root/Main/GUI/MainMenu.update_continue_button_enabled()
+	if has_watched_cutscene:
+		$GUI/StartingCutScene._on_skip_pressed()
+	$GUI/MainMenu.update_continue_button_enabled()
 
 func unlock_next_level() -> void:
 	levels_unlocked += 1
@@ -32,8 +34,14 @@ func reset_save() -> void:
 	current_level = 1
 	save.set_value("", "levels_unlocked", levels_unlocked)
 	save.set_value("", "current_level", current_level)
+	save.set_value("", "has_watched_cutscene", false)
 	save.save("user://save.cfg")
 	$/root/Main/GUI/MainMenu.update_continue_button_enabled()
+
+func mark_cutscene_watched() -> void:
+	has_watched_cutscene = true
+	save.set_value("", "has_watched_cutscene", has_watched_cutscene)
+	save.save("user://save.cfg")
 
 func load_level() -> void:
 	# Clear the previous level
