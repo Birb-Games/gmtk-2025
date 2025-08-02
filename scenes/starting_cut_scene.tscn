@@ -1,0 +1,150 @@
+[gd_scene load_steps=16 format=3 uid="uid://o31g4dri56jo"]
+
+[ext_resource type="Theme" uid="uid://ca4fjx3thf2g7" path="res://assets/theme.tres" id="1_3263u"]
+[ext_resource type="Texture2D" uid="uid://dsq5rgehdjua3" path="res://assets/textures/space.png" id="1_jgenq"]
+[ext_resource type="Texture2D" uid="uid://c1d18xg5ntnp8" path="res://assets/textures/homeworld.png" id="2_5v16u"]
+[ext_resource type="Script" uid="uid://6woa81kxf3c1" path="res://scripts/starting_cut_scene.gd" id="2_u2fgv"]
+[ext_resource type="Script" uid="uid://20ha62frq61c" path="res://scripts/space_sprite.gd" id="3_3263u"]
+[ext_resource type="Texture2D" uid="uid://cefcp8xl4mse0" path="res://assets/textures/rogue_planet.png" id="4_5k4aj"]
+[ext_resource type="Texture2D" uid="uid://cse8w7l4dd4f7" path="res://assets/textures/large_circle.png" id="5_hqau3"]
+[ext_resource type="Texture2D" uid="uid://cyc277ke1frt4" path="res://assets/textures/satellite.png" id="8_u0ofa"]
+[ext_resource type="Texture2D" uid="uid://rjsysmwym2tc" path="res://assets/textures/enemy_satellite1.png" id="9_mn708"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mn708"]
+atlas = ExtResource("8_u0ofa")
+region = Rect2(0, 0, 56, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctdxg"]
+atlas = ExtResource("8_u0ofa")
+region = Rect2(56, 0, 56, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5k4aj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mn708")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctdxg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whp8o"]
+atlas = ExtResource("9_mn708")
+region = Rect2(0, 0, 46, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1x5pr"]
+atlas = ExtResource("9_mn708")
+region = Rect2(46, 0, 46, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ae215"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whp8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1x5pr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="StartingCutScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3263u")
+script = ExtResource("2_u2fgv")
+text = Array[String](["The rogue planet started off as just another star in the sky...", "But it grew bigger and bigger...", "Our astronomers studied it and discovered that 
+the rogue planet harbored an alien civilization.", "But the aliens were hostile 
+and they began attacking the solar system!", "That is why the Voyager 3 program was started:
+to launch satellites around the solar system 
+and destroy the attacking alien probes. ", "You are in charge of controlling the satellites
+and giving humanity a fighting chance.", "Press A/D to change your orbital direction to left/right.
+Press W/S to move up and down in your orbit.
+Use the mouse to aim; use Left click to shoot.
+Destroy all alien probes to beat the level, Good luck!"])
+planet_scales = Array[float]([0.1, 0.5, 2.0, 3.0, 4.5, 5.5, 7.0])
+planet_offsets = Array[float]([8.0, 12.0, 16.0, 22.0, 32.0, 44.0, 56.0])
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(578, 325)
+scale = Vector2(1.34815, 1.34815)
+texture = ExtResource("1_jgenq")
+
+[node name="RoguePlanet" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("4_5k4aj")
+script = ExtResource("3_3263u")
+rotation_speed = -1.57
+
+[node name="Earth" type="Sprite2D" parent="."]
+position = Vector2(577, 772)
+scale = Vector2(12.875, 12.875)
+texture = ExtResource("2_5v16u")
+script = ExtResource("3_3263u")
+
+[node name="Atmosphere" type="Sprite2D" parent="Earth"]
+modulate = Color(0, 0.490196, 0.666667, 0.501961)
+z_index = -1
+scale = Vector2(1.06511, 1.06511)
+texture = ExtResource("5_hqau3")
+script = ExtResource("3_3263u")
+rotation_speed = -1.57
+
+[node name="Atmosphere2" type="Sprite2D" parent="Earth"]
+modulate = Color(0, 0.490196, 0.666667, 0.501961)
+z_index = -1
+scale = Vector2(1.11961, 1.11961)
+texture = ExtResource("5_hqau3")
+script = ExtResource("3_3263u")
+rotation_speed = 0.3
+
+[node name="Player" type="AnimatedSprite2D" parent="."]
+position = Vector2(576, 828)
+scale = Vector2(7, 7)
+sprite_frames = SubResource("SpriteFrames_5k4aj")
+
+[node name="EnemySatellite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-285, 426)
+rotation = 0.513127
+scale = Vector2(7, 7)
+sprite_frames = SubResource("SpriteFrames_ae215")
+
+[node name="Skip" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1009.0
+offset_top = 580.0
+offset_right = 1126.0
+offset_bottom = 627.0
+text = "Skip"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 105.0
+offset_right = 1152.0
+offset_bottom = 199.0
+theme_override_colors/font_shadow_color = Color(0.60933, 0.60933, 0.60933, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+horizontal_alignment = 1
+
+[node name="Next" type="Button" parent="."]
+layout_mode = 0
+offset_left = 507.0
+offset_top = 223.0
+offset_right = 633.0
+offset_bottom = 283.0
+text = "Next"
+
+[connection signal="pressed" from="Skip" to="." method="_on_skip_pressed"]
+[connection signal="pressed" from="Next" to="." method="_on_next_pressed"]
