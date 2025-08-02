@@ -17,4 +17,4 @@ func _process(_delta: float) -> void:
 	# Adjust the background coverage
 	zoom.x = clamp(zoom.x, MIN_ZOOM, MAX_ZOOM)
 	zoom.y = zoom.x
-	$Background.scale = Vector2(1.0 / zoom.x, 1.0 / zoom.y) * 2.0
+	$Background.scale = Vector2(1.0 / zoom.x, 1.0 / zoom.y) * 2.5
