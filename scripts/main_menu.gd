@@ -3,10 +3,14 @@ extends Control
 @onready var credits = $/root/Main/GUI/Credits
 @onready var level_select = $/root/Main/GUI/LevelSelect
 
+var master = AudioServer.get_bus_index("Master")
+
 func _ready() -> void:
 	# Hide the quit button on web
 	if OS.get_name() == "HTML5":
 		$VBoxContainer/Quit.hide()
+	var volume = AudioServer.get_bus_volume_db(master)
+	$VolumeSlider.value = db_to_linear(volume) * 100.0
 
 func update_continue_button_enabled() -> void:
 	if $/root/Main.levels_unlocked == 1:
@@ -33,3 +37,6 @@ func _on_continue_pressed() -> void:
 func _on_reset_save_pressed() -> void:
 	hide()
 	$/root/Main/GUI/ConfirmWipeSave.show()
+
+func _on_volume_slider_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(master, linear_to_db(value / 100.0))
