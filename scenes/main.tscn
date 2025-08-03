@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d0dmficfh1ng4"]
+[gd_scene load_steps=15 format=3 uid="uid://d0dmficfh1ng4"]
 
 [ext_resource type="Script" uid="uid://do4ophba58a5u" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://dsxmo3loqjgey" path="res://scenes/main_menu.tscn" id="4_jyhfs"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://o31g4dri56jo" path="res://scenes/starting_cut_scene.tscn" id="7_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://ljm2v51x3rg4" path="res://scenes/confirm_wipe_save.tscn" id="8_eb6dy"]
 [ext_resource type="AudioStream" uid="uid://bjmdruip2a76d" path="res://assets/sfx/asteroid_explosion.wav" id="8_tipki"]
+[ext_resource type="AudioStream" uid="uid://b1pbl0cop5y1i" path="res://assets/music/music.wav" id="13_trceg"]
+[ext_resource type="Script" uid="uid://dhkda57thb32r" path="res://scripts/loop_music.gd" id="14_a8y0u"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_jyhfs")
@@ -59,3 +61,10 @@ volume_db = -20.0
 stream = ExtResource("8_tipki")
 volume_db = -5.0
 max_polyphony = 8
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_trceg")
+volume_db = 2.0
+script = ExtResource("14_a8y0u")
+
+[connection signal="finished" from="Music" to="Music" method="_on_finished"]
