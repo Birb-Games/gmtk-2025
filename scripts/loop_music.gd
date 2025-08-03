@@ -5,10 +5,10 @@ extends AudioStreamPlayer
 
 var has_been_in_level: bool = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if $/root/Main/GUI/StartingCutScene.is_visible() and !playing:
 		play()
-	if $/root/Main/Level != null:
+	if get_node_or_null("/root/Main/Level") != null:
 		has_been_in_level = true
 		if !playing:
 			var current_track = randi_range(0, 1)
