@@ -7,7 +7,7 @@ var master = AudioServer.get_bus_index("Master")
 
 func _ready() -> void:
 	# Hide the quit button on web
-	if OS.get_name() == "HTML5":
+	if OS.get_name() == "Web":
 		$VBoxContainer/Quit.hide()
 	var volume = AudioServer.get_bus_volume_db(master)
 	$VolumeSlider.value = db_to_linear(volume) * 100.0
